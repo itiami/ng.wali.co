@@ -1,0 +1,18 @@
+<!-- product-detail.component.html -->
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="content">
+        <p>product-detail works!</p>
+        <input [(ngModel)]="name" placeholder="Enter your name">
+        <p>You Have Typed: {{name}}</p>
+
+        <p highlight>This paragraph is highlighted.</p>
+
+        <!-- <div>
+            <input type="text" [value]="name" [placeholder]="namePlaceHolder" (input)="name=$any($event.target).value">
+
+            <p> You entered {{name}}</p>
+            <button (click)="clearName()">Clear</button>
+        </div> -->
+    </div>
+</div>

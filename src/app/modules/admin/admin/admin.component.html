@@ -1,0 +1,29 @@
+<!-- product-list.component.html -->
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="content">
+        <div class="leftPannel">
+            <h4>ADMIN</h4>
+            <div class="cat">Users</div>
+            <div class="cat">Category</div>
+            <div class="cat">Product</div>
+            <div class="cat">Order</div>
+            <div class="cat">Customers</div>
+            <div class="cat">Statics</div>
+            <div class="cat">Reviews</div>
+            <div class="cat">Transactions</div>
+            <div class="cat">Hot Offers</div>
+            <hr>
+            <div class="cat">Appearance</div>
+            <div class="cat">Settings</div>
+        </div>
+        <div class="rightPannel">
+            <button (click)="logout()">Logout</button>
+            <p>Admin Page...</p>
+            <p>Login Successfull.......</p>
+            <button [routerLink]="['/']" routerLinkActive="router-link-active">Home Page</button>
+
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

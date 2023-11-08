@@ -1,0 +1,8 @@
+*.back*
+.env
+node_modules/
+dist/
+.angular
+/dist/
+environments/
+assets/

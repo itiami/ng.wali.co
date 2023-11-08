@@ -1,0 +1,36 @@
+<!-- product-list.component.html -->
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="content">
+
+        <div id="prodTitleLogo">
+            <img id="cartIco" alt="item" [src]="itemImageUrl">
+            <p [attr.class]="prodAttr">{{pageTitle}}</p>
+        </div>
+
+        <div id="productsList">
+            <div class="productCard">
+                <div *ngFor="let product of productList" class="cardWrapper">
+                    <div>
+                        <img src="{{ product.imageUrl}}" alt="" class="prodImg">
+                    </div>
+
+                    <div class="textDec"> {{ product.title}} </div>
+                    <div>Price: {{product.price}} €</div>
+                    <div class="textDec">Detail: {{product.detail}}</div>
+                    <div class="cartBtn">
+                        <button class="addToCart add_buy"
+                            (click)="addToCart('total: '+ product.title) + '\nPrice: '+ product.price">
+                            Add to Cart
+                        </button>
+                        <button class="buyNow add_buy"
+                            (click)="addToCart('total: '+ product.title) + '\nPrice: '+ product.price">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
