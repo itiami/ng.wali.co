@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nova+Round:regular);
+
 header {
   font-family: "Nova Round", sans-serif;
 }
@@ -52,6 +53,10 @@ a {
 
 .bottom_bar {
   background-color: rgb(105, 135, 163);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 .bottom_bar_content {
@@ -112,7 +117,7 @@ a {
 }
 
 .nav_link {
-  color: rgba(14, 11, 11, 0.75);
+  /* color: rgba(14, 11, 11, 0.75); */
 }
 
 .nav_link:hover,
@@ -127,7 +132,7 @@ a {
 .bar {
   width: 20px;
   height: 2px;
-  background-color: black;
+
   margin-top: 5px;
   transition: all 0.3s;
 }

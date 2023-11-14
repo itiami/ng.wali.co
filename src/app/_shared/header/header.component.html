@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <header class="header">
 
     <!-- Header Top Bar -->
@@ -22,51 +23,27 @@
 
     <!-- Header Nav Menu -->
     <div class="bottom_bar">
-        <div class="bottom_bar_content">
-            <a routerLink="/" class="logo nav_link" data-nav>
-                <img [src]="imgUrl" alt="W3Soft" class="logoImg">
-                <span class="logoTxt">W3Soft</span>
-            </a>
-
-            <nav class="nav" data-nav>
-                <ul class="nav_list">
-                    <li class="item navListItem"><a class="nav_link" routerLink="#">Solutions</a>
-                        <ul class="navListGen1">
-                            <li class="item"><a class="nav_link" routerLink="">Business Modelling</a></li>
-                            <li class="item"><a class="nav_link" routerLink="">Corporate Support</a></li>
-                            <li class="navListSubItem"><a class="nav_link" routerLink="#">Leasing</a>
-                                <ul class="navListGen2">
-                                    <li class="item"><a class="nav_link" routerLink="">Sub Leasing 1</a></li>
-                                    <li class="item"><a class="nav_link" routerLink="">Sub Leasing 2</a></li>
-                                    <li class="item"><a class="nav_link" routerLink="">Sub Leasing 3</a></li>
-                                </ul>
+        <div>
+            <nav class="text-white">
+                <ul class="flex space-x-4">
+                    <li *ngFor="let item of menuItems" class="relative" [class.group]="item.children.length">
+                        <a [routerLink]="item.link"
+                            class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">{{
+                            item.title }}</a>
+                        <ul *ngIf="item.children.length"
+                            class="absolute hidden group-hover:block bg-gray-700 border border-gray-600">
+                            <li *ngFor="let child of item.children" class="px-3 py-2 hover:bg-gray-600">
+                                <a [routerLink]="child.link" class="block">{{ child.title }}</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="item navListItem"><a class="nav_link" routerLink="/users">User Profile</a></li>
-                    <li class="item navListItem"><a class="nav_link" routerLink="#">Projects</a>
-                        <ul class="navListGen1">
-                            <li class="item"><a class="nav_link" routerLink="">Business Modelling</a></li>
-                            <li class="item"><a class="nav_link" routerLink="">Corporate Support</a></li>
-                            <li class="navListSubItem"><a class="nav_link" routerLink="">Leasing</a>
-                                <ul class="navListGen2">
-                                    <li class="item"><a class="nav_link" routerLink="">Sub Leasing 1</a></li>
-                                    <li class="item"><a class="nav_link" routerLink="">Sub Leasing 2</a></li>
-                                    <li class="item"><a class="nav_link" routerLink="">Sub Leasing 3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="item navListItem"><a class="nav_link" routerLink="/contact">Contact</a></li>
-                    <li class="item navListItem"><a class="nav_link" routerLink="/admin">Admin</a></li>
                 </ul>
             </nav>
-            <div class="burger" burgerMenu>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
         </div>
+        <div>
+            <button (click)="logout()">Logout</button>
+        </div>
+
     </div>
 </header>
 

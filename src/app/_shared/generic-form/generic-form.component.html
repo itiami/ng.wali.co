@@ -1,0 +1,7 @@
+<form [formGroup]="formGroup">
+    <div *ngFor="let control of formConfig">
+        <label>{{control.label}}</label>
+        <input [formControlName]="control.name" [type]="control.type">
+    </div>
+    <button type="submit">Submit</button>
+</form>

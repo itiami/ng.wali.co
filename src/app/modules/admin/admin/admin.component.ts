@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
-
-
 
 
 @Component({
@@ -10,18 +8,39 @@ import { AuthService } from 'src/app/_services/auth.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
+  containerName: string | null = "user";
+  display: Boolean = false;
 
+  formConfig = [
+    { name: 'username', type: 'input', label: 'Username' },
+    { name: 'email', type: 'input', label: 'Email' },
+    { name: 'password', type: 'input', label: 'Password' },
+  ];
 
   constructor(
-    private auth: AuthService,
-    private router: Router,
+    private elementRef: ElementRef,
+    private _router: Router
   ) { }
 
+  ngOnInit(): void { }
 
-  logout() {
-    this.auth.logout();
-    this.router.navigate(["/auth/login"]);
+
+
+
+
+  ngAfterViewInit(): void {
+    console.log(this.containerName);
+
   }
+
+  displayItem(elem: HTMLElement) {
+    this.display = true;
+    if (this.containerName !== null ) {
+      this.containerName = elem.getAttribute("name");
+    }
+  }
+
+
 
 }

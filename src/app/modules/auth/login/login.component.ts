@@ -67,8 +67,8 @@ export class LoginComponent implements OnInit {
         {
           next: res => {
             console.log(res.body); // Object { auth: true, token: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbWVzIiwicGFzc3dvcmQiOiJqYW1lcyIsImlhdCI6MTY5Nzk3Nzg5NCwiZXhwIjoxNjk4MDY0Mjk0fQ.MmKJlJD4NHNY1FNTcy_GzVXy2Zr32ZgSEvVs0CQj_gf-M_DZ09EvG55wqMBqVH89-AJDPWWnOYkqrEzAv847rw" }
-            console.log(res); // Object { headers: {…}, status: 200, statusText: "OK", url: "http://192.168.1.235:3090/api/user/findOneReqBody", ok: true, type: 4, body: {…} }
-            console.log(res.ok); // true
+            //console.log(res); // Object { headers: {…}, status: 200, statusText: "OK", url: "http://192.168.1.235:3090/api/user/findOneReqBody", ok: true, type: 4, body: {…} }
+            //console.log(res.ok); // true
             console.log(res.status); // 200
             console.log(res.statusText); // "OK"
             localStorage.setItem("token", res.body.token);

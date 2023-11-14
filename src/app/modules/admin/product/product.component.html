@@ -1,1 +1,13 @@
 <p>product works!</p>
+
+
+<ul *ngFor="let item of productList">
+
+    <li>{{item.title}}</li>
+    <li>Price: {{item.price}}</li>
+    <li>inStock: {{item.quantity}}</li>
+    <li>ProductID: {{item._id}}</li>
+    <li>CategoryID: {{item.categoryId}}</li>
+    <li><img src="{{item.imageUrl}}" alt=""></li>
+    <hr><br>
+</ul>

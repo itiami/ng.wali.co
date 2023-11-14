@@ -4,11 +4,11 @@
     <div class="content">
         <div class="leftPannel">
             <h4>ADMIN</h4>
-            <div class="cat">Users</div>
-            <div class="cat">Category</div>
+            <div class="cat" #users name="users" (click)="displayItem(users)">Users</div>
+            <div class="cat" #category name="category" (click)="displayItem(category)">Category</div>
             <div class="cat">Product</div>
             <div class="cat">Order</div>
-            <div class="cat">Customers</div>
+            <div class="cat" #myButton>Customers</div>
             <div class="cat">Statics</div>
             <div class="cat">Reviews</div>
             <div class="cat">Transactions</div>
@@ -18,10 +18,18 @@
             <div class="cat">Settings</div>
         </div>
         <div class="rightPannel">
-            <button (click)="logout()">Logout</button>
-            <p>Admin Page...</p>
-            <p>Login Successfull.......</p>
-            <button [routerLink]="['/']" routerLinkActive="router-link-active">Home Page</button>
+            <!-- <div>
+                <app-generic-form [formConfig]="formConfig"></app-generic-form>
+            </div> -->
+
+            <hr>
+            <!-- <div id="componentHolder" #componentHolder *ngIf="containerName === 'users'; else category">
+                <app-users></app-users>
+            </div>
+            <ng-template #category>
+                <app-dashboard></app-dashboard>
+            </ng-template> -->
+
 
         </div>
     </div>

@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { UserComponent } from './user/user.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -15,12 +16,13 @@ import { UserComponent } from './user/user.component';
     AdminComponent,
     CategoryComponent,
     ProductComponent,
-    UserComponent
+    UserComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class AdminModule { }

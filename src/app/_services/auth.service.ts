@@ -61,7 +61,7 @@ export class AuthService {
     return this.http
       .post<{ token: string }>(
         this.URL_ENDPOINT + "user/findOne",
-        user,
+        { filter: user },
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
