@@ -4,31 +4,28 @@
     <div class="content">
         <div class="leftPannel">
             <h4>ADMIN</h4>
-            <div class="cat" #users name="users" (click)="displayItem(users)">Users</div>
-            <div class="cat" #category name="category" (click)="displayItem(category)">Category</div>
-            <div class="cat">Product</div>
-            <div class="cat">Order</div>
-            <div class="cat" #myButton>Customers</div>
-            <div class="cat">Statics</div>
-            <div class="cat">Reviews</div>
-            <div class="cat">Transactions</div>
-            <div class="cat">Hot Offers</div>
+            <div class="cat" #users name="users" (click)="onChangeComponent('UserComponent')">Users</div>
+            <div class="cat" #category name="category" (click)="onChangeComponent('CategoryComponent')">Category</div>
+            <div class="cat" (click)="onChangeComponent('ProductComponent')">Product</div>
+            <div class="cat" (click)="onChangeComponent('OrderComponent')">Order</div>
+            <div class="cat" (click)="onChangeComponent('CustomerComponent')">Customers</div>
+            <div class="cat" (click)="onChangeComponent('CategoryComponent')">Statics</div>
+            <div class="cat" (click)="onChangeComponent('CategoryComponent')">Reviews</div>
+            <div class="cat" (click)="onChangeComponent('CategoryComponent')">Transactions</div>
+            <div class="cat" (click)="onChangeComponent('CategoryComponent')">Hot Offers</div>
             <hr>
             <div class="cat">Appearance</div>
             <div class="cat">Settings</div>
         </div>
         <div class="rightPannel">
-            <!-- <div>
-                <app-generic-form [formConfig]="formConfig"></app-generic-form>
-            </div> -->
 
-            <hr>
-            <!-- <div id="componentHolder" #componentHolder *ngIf="containerName === 'users'; else category">
-                <app-users></app-users>
+            <h4>Switching Compnents..</h4>
+            <div [ngSwitch]="currentComponent">
+                <app-user *ngSwitchCase="'UserComponent'"></app-user>
+                <app-category *ngSwitchCase="'CategoryComponent'"></app-category>
+                <app-product *ngSwitchCase="'ProductCategory'"></app-product>
             </div>
-            <ng-template #category>
-                <app-dashboard></app-dashboard>
-            </ng-template> -->
+
 
 
         </div>

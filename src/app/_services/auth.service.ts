@@ -61,7 +61,8 @@ export class AuthService {
     return this.http
       .post<{ token: string }>(
         this.URL_ENDPOINT + "user/findOne",
-        { filter: user },
+        { filter: user }, // the req.body will be as below..
+
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
@@ -70,6 +71,14 @@ export class AuthService {
         }
       )
   }
+
+  /* 
+    req.body
+    "filter": {
+      "username": "Kyla",
+      "password": "1234"
+    }
+  */
 
 }
 

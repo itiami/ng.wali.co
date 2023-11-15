@@ -23,6 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-  ]
+  ],
+
 })
 export class AdminModule { }

@@ -29,11 +29,13 @@
 
 .cat {
   padding: 5px 15px;
+  transition: all;
 }
 
 .cat:hover {
   cursor: pointer;
-  color: white;
+  border-right: 4px solid blue;
+  transition-duration: 200ms;
 }
 
 input {

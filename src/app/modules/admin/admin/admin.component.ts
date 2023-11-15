@@ -1,6 +1,10 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewContainerRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
+import { UserComponent } from '../user/user.component';
+import { CategoryComponent } from '../category/category.component';
+import { ProductComponent } from '../product/product.component';
+
 
 
 @Component({
@@ -9,7 +13,7 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  containerName: string | null = "user";
+  currentComponent: string = 'UserComponent';
   display: Boolean = false;
 
   formConfig = [
@@ -18,29 +22,63 @@ export class AdminComponent implements OnInit {
     { name: 'password', type: 'input', label: 'Password' },
   ];
 
+  @ViewChild('UserComponent', { read: ViewContainerRef })
+  UserComponent_container?: ViewContainerRef;
+
+  @ViewChild('CategoryComponent', { read: ViewContainerRef })
+  CategoryComponent_container?: ViewContainerRef;
+
+  @ViewChild('ProductComponent', { read: ViewContainerRef })
+  ProductComponent_container?: ViewContainerRef;
+
   constructor(
     private elementRef: ElementRef,
-    private _router: Router
+    private _router: Router,
+    private viewContainerRef: ViewContainerRef
   ) { }
 
   ngOnInit(): void { }
 
 
-
-
-
-  ngAfterViewInit(): void {
-    console.log(this.containerName);
-
-  }
+  ngAfterViewInit(): void { }
 
   displayItem(elem: HTMLElement) {
     this.display = true;
-    if (this.containerName !== null ) {
-      this.containerName = elem.getAttribute("name");
-    }
   }
 
 
+  loadComponent(componentName: string) {
+    let viewContainerRef;
+    switch (componentName) {
+      case 'ProductComponent':
+        viewContainerRef = this.viewContainerRef.createComponent(ProductComponent);
+        break;
+
+      case 'UserComponent':
+        viewContainerRef = this.viewContainerRef.createComponent(UserComponent);
+        break;
+
+      case 'CategoryComponent':
+        viewContainerRef = this.viewContainerRef.createComponent(CategoryComponent);
+        break;
+
+      default:
+        return ProductComponent
+    }
+    viewContainerRef.destroy();
+    return viewContainerRef;
+  }
+
+
+  onChangeComponent(componentName: string) {
+    this.currentComponent = componentName;
+    this.loadComponent(componentName);
+    console.log(componentName);
+
+  }
+
+  @HostListener("") ref() {
+
+  }
 
 }
