@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { navBarItems } from './header_items';
 import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
@@ -16,6 +16,8 @@ export class HeaderComponent {
   navBar = {
     title: ""
   }
+
+  @Input() _inpUsername?: String;
 
   constructor(
     private auth: AuthService,

@@ -43,3 +43,8 @@ input {
   padding: 5px;
   border-radius: 5px;
 }
+
+.ProductComponent {
+  display: flex;
+  flex-direction: row;
+}

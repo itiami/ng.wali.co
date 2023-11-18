@@ -1,6 +1,5 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewContainerRef, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewContainerRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/_services/auth.service';
 import { UserComponent } from '../user/user.component';
 import { CategoryComponent } from '../category/category.component';
 import { ProductComponent } from '../product/product.component';
@@ -13,6 +12,7 @@ import { ProductComponent } from '../product/product.component';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  //currentComponent: string = 'ProductComponent';
   currentComponent: string = 'UserComponent';
   display: Boolean = false;
 
@@ -22,14 +22,6 @@ export class AdminComponent implements OnInit {
     { name: 'password', type: 'input', label: 'Password' },
   ];
 
-  @ViewChild('UserComponent', { read: ViewContainerRef })
-  UserComponent_container?: ViewContainerRef;
-
-  @ViewChild('CategoryComponent', { read: ViewContainerRef })
-  CategoryComponent_container?: ViewContainerRef;
-
-  @ViewChild('ProductComponent', { read: ViewContainerRef })
-  ProductComponent_container?: ViewContainerRef;
 
   constructor(
     private elementRef: ElementRef,
@@ -63,7 +55,7 @@ export class AdminComponent implements OnInit {
         break;
 
       default:
-        return ProductComponent
+        return ProductComponent;
     }
     viewContainerRef.destroy();
     return viewContainerRef;

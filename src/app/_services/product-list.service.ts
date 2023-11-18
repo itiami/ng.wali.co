@@ -14,9 +14,24 @@ export class ProductListService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<ProductList> {
+  getAllProducts(): Observable<ProductList> {
     return this.http.get(`${this.URL_ENDPOINT}product`);
   }
+
+
+  productDetail(product: ProductList): Observable<any> {
+    return this.http.post(
+      `${this.URL_ENDPOINT}findOne`,
+      product,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        observe: 'response'
+      }
+    );
+  }
+
 
   createProduct(product: ProductList): Observable<HttpResponse<any>> {
     return this.http.post(

@@ -1,0 +1,10 @@
+<div class="">
+    <p class="underline underline-offset-8 decoration-blue-800 decoration-4">_share/input-output/counter works!</p>
+    <div class="">
+        <app-counter-output [counter_output]="counter"></app-counter-output>
+    </div>
+    <div class="">
+        <app-counter-buttons (increment)="onIncrement()" (decrement)="onDecrement()" (reset)="onReset()">
+        </app-counter-buttons>
+    </div>
+</div>

@@ -7,16 +7,22 @@ import { ProductListService } from 'src/app/_services/product-list.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
+  data = new Object();
   productList: any = [];
+  qt: number = 0;
+
 
   constructor(
     private productService: ProductListService,
   ) { }
 
+  ngOnInit(): void {
+    this.getProductList();
+  }
+
 
   getProductList(): void {
-    this.productService.getProducts().subscribe(data => {
+    this.productService.getAllProducts().subscribe(data => {
       if (data) {
         this.productList = data;
         console.log(data)
@@ -24,8 +30,16 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.getProductList();
+
+  productDetail() {
   }
+
+  addToCart(...arg: any) {
+    this.qt += 1;
+    Object.assign(this.data, ...arg);
+    Object.assign(this.data, { qt: this.qt })
+    console.log(this.data)
+  }
+
 
 }

@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from './_shared/shared.module';
 import { NotFoundComponent } from './_shared/not-found/not-found.component';
+import { AboutComponent } from './modules/about/about.component';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule) },
+  { path: "about", component: AboutComponent },
   { path: 'users', loadChildren: () => import('./modules/user-profile/user-profile.module').then(m => m.UserProfileModule) },
   { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   { path: 'carrt', loadChildren: () => import('./modules/cart/cart.module').then(m => m.CartModule) },

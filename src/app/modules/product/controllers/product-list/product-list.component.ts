@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
 
 
   getProductList(): void {
-    this.productService.getProducts().subscribe(data => {
+    this.productService.getAllProducts().subscribe(data => {
       if (data) {
         this.productList = data;
         console.log(data)

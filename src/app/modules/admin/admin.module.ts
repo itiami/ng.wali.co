@@ -11,13 +11,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
+
 @NgModule({
   declarations: [
     AdminComponent,
     CategoryComponent,
     ProductComponent,
     UserComponent,
-    DashboardComponent
+    DashboardComponent,
+
   ],
   imports: [
     CommonModule,
