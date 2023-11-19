@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, ViewRef } from '@angular/core';
 import { navBarItems } from './header_items';
 import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  darkMode: boolean = false;
+
   menuItems = navBarItems;
   imgUrl = "../assets/img/logo256.png"
 
@@ -18,6 +20,9 @@ export class HeaderComponent {
   }
 
   @Input() _inpUsername?: String;
+
+  @ViewChild("html")
+  htmlElem!: ElementRef;
 
   constructor(
     private auth: AuthService,
@@ -28,6 +33,13 @@ export class HeaderComponent {
   logout() {
     this.auth.logout();
     this.router.navigate(["/auth/login"]);
+  }
+
+
+  onClickMode() {
+    this.darkMode = true;
+
+
   }
 
 }

@@ -1,8 +1,13 @@
-import { createAction } from "@ngrx/store";
+import { createAction, props } from "@ngrx/store";
 
 export const incCounter = createAction('[Counter Component] Increment');
 export const decCounter = createAction('[Counter Component] Decrement');
 export const resetCounter = createAction('[Counter Component] Reset');
+
+export const customIncCounter = createAction(
+    '[Counter Component] Custom Increment',
+    props<{ value: number }>() // here we can pass multiple object
+);
 
 
 /* 

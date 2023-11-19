@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { decCounter, incCounter, resetCounter } from 'src/app/ngrx-store/counter.action';
+import * as CounterActions from 'src/app/ngrx-store/counter.action';
 import { ICounter } from 'src/app/ngrx-store/counter.state';
 
 @Component({
@@ -10,16 +11,21 @@ import { ICounter } from 'src/app/ngrx-store/counter.state';
 })
 export class NgrxCounterButtonComponent {
 
+
   constructor(private store: Store<ICounter>) { };
 
   onIncrement() {
-    this.store.dispatch(incCounter());
+    console.log("Increment");
+    this.store.dispatch(CounterActions.incCounter());
   }
   onDecrement() {
-    this.store.dispatch(decCounter());
+    this.store.dispatch(CounterActions.decCounter());
   }
   onReset() {
-    this.store.dispatch(resetCounter());
+    this.store.dispatch(CounterActions.resetCounter());
   }
 
+
 }
+
+

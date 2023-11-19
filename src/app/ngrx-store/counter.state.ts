@@ -3,5 +3,5 @@ export interface ICounter {
 }
 
 export const counterInitialState: ICounter = {
-    counter: 0
+    counter: 0,
 }

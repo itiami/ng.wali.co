@@ -34,5 +34,11 @@ const _counterReducer = createReducer(
             counter: 0
         }
     }),
+    on(CounterAction.customIncCounter, (state, action) => {
+        return {
+            ...state,
+            counter: state.counter + action.value
+        }
+    })
 
 )
