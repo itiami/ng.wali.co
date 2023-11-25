@@ -9,6 +9,9 @@ import { NgrxCounterComponent } from './ngrx-counter/ngrx-counter/ngrx-counter.c
 import { NgrxCounterOutputComponent } from './ngrx-counter/ngrx-counter-output/ngrx-counter-output.component';
 import { FormsModule } from '@angular/forms';
 import { NgrxCustomCounterComponent } from './ngrx-counter/ngrx-custom-counter/ngrx-custom-counter.component';
+import { PostComponent } from './post/post.component';
+import { SharedModule } from 'src/app/_shared/shared.module';
+
 
 
 @NgModule({
@@ -20,11 +23,13 @@ import { NgrxCustomCounterComponent } from './ngrx-counter/ngrx-custom-counter/n
     NgrxCounterComponent,
     NgrxCounterOutputComponent,
     NgrxCustomCounterComponent,
+    PostComponent,
   ],
   imports: [
     CommonModule,
     TutoRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   exports: [
     CounterButtonsComponent,
@@ -33,6 +38,7 @@ import { NgrxCustomCounterComponent } from './ngrx-counter/ngrx-custom-counter/n
     NgrxCounterButtonComponent,
     NgrxCounterComponent,
     NgrxCounterOutputComponent,
+    PostComponent,
   ]
 })
 export class TutoModule { }

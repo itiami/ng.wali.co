@@ -10,6 +10,7 @@ import { Category } from '../_model/category.model';
   providedIn: 'root'
 })
 export class ProductListService {
+
   private URL_ENDPOINT = `http://${environment.backend.host}:${environment.backend.port}/api/`;
 
   constructor(private http: HttpClient) { }
@@ -50,7 +51,7 @@ export class ProductListService {
   getCategory(category: Category): Observable<HttpResponse<any>> {
     return this.http
       .post<{ token: string }>(
-        this.URL_ENDPOINT + "user/findOneReqBody",
+        this.URL_ENDPOINT + "category/findOneReqBody",
         category,
         {
           headers: new HttpHeaders({
@@ -59,7 +60,32 @@ export class ProductListService {
           observe: 'response'
         }
       )
-  }
+  };
+
+
+  updateProduct() {
+
+  };
+
+  deleteProduct(product: ProductList): Observable<HttpResponse<any>> {
+    return this.http.post(
+      this.URL_ENDPOINT + "product/delProd",
+      { query: product },
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+        observe: 'response'
+      }
+    )
+  };
+
+  //updateProduct(){}
+
+
+
 
 
 }
+
+

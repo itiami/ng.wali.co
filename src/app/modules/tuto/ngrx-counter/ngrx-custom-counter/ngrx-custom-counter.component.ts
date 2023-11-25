@@ -1,27 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as CounterActions from 'src/app/ngrx-store/counter.action';
-import { ICounter } from 'src/app/ngrx-store/counter.state';
+import * as CounterActions from 'src/app/modules/tuto/ngrx-counter/counter.action';
+import { selectCounterMsg } from '../counter.selectors';
+import { ICounterState, counterInitialState } from '../counter.state';
+import { AppState } from 'src/app/ngrx-app-store/app.state';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ngrx-custom-counter',
   templateUrl: './ngrx-custom-counter.component.html',
   styleUrls: ['./ngrx-custom-counter.component.css']
 })
-export class NgrxCustomCounterComponent {
+export class NgrxCustomCounterComponent implements OnInit, OnDestroy {
+  customCounterBtnInp?: number;
+  inpCounterMsg?: string;
+  msgOutput?: string;
+  counterSubscription!: Subscription;
+  msgObservable$!: Observable<any>;
 
-  constructor(private store: Store<ICounter>) { };
 
-  counterBtnInp?: number;
+  //constructor(private store: Store<{ counter: ICounterState }>) { };
+  // or
+  constructor(private store: Store<{ counter: ICounterState }>) { };
 
-  addCustomValue() {
-    console.log("Custom Increment");
-    if (this.counterBtnInp !== undefined && this.counterBtnInp !== null) {
+  ngOnInit(): void {
+    this.counterSubscription = this.store.select(selectCounterMsg).subscribe((data) => {
+      this.msgOutput = data;
+      console.log("Counter Coustom Input is called");
+    })
+
+    this.msgObservable$ = this.store.select(selectCounterMsg);
+  }
+
+  ngOnDestroy(): void {
+    if (this.counterSubscription) {
+      this.counterSubscription.unsubscribe();
+    }
+    console.log("ngOnDestroy");
+
+  }
+
+  addCustomNumber() {
+    if (this.customCounterBtnInp !== undefined && this.customCounterBtnInp !== null) {
       this.store.dispatch(
         CounterActions.customIncCounter({
-          value: +this.counterBtnInp // convert Str to Num using + symbole..
+          value: +this.customCounterBtnInp // convert Str to Num using + symbole..
         })
       )
+    }
+  }
+
+  addCustomTxt() {
+    if (this.inpCounterMsg !== undefined) {
+      this.store.dispatch(CounterActions.customCounterTxt({
+        value: this.inpCounterMsg
+      }))
     }
   }
 

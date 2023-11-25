@@ -3,16 +3,18 @@
     <app-header></app-header>
     <div class="content">
         <p>product-detail works!</p>
-        <input [(ngModel)]="name" placeholder="Enter your name">
-        <p>You Have Typed: {{name}}</p>
-
-        <p highlight>This paragraph is highlighted.</p>
-
-        <!-- <div>
-            <input type="text" [value]="name" [placeholder]="namePlaceHolder" (input)="name=$any($event.target).value">
-
-            <p> You entered {{name}}</p>
-            <button (click)="clearName()">Clear</button>
+        <!-- <div *ngFor="let item of products$ | async" class="flex align-middle gap-2">
+            <div>Title: {{item}}</div>
+            <mat-icon fontIcon="update" class="cursor-pointer text-green-600" />
+            <mat-icon fontIcon="delete" class="cursor-pointer" data-tooltip-target="tooltip-animation" (click)="delProduct({
+                    title: item
+                })" />
+            <div id="tooltip-animation" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Tooltip content
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
         </div> -->
+
     </div>
 </div>

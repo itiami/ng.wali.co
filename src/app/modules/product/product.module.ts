@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './controllers/product-detail/product-det
 import { SearchBarComponent } from './controllers/search-bar/search-bar.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ProductRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
 
   ]
 })

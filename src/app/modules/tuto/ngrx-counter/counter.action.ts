@@ -10,6 +10,11 @@ export const customIncCounter = createAction(
 );
 
 
+export const customCounterTxt = createAction(
+    "[Counter Component] Custom Text",
+    props<{ value: string }>()
+)
+
 /* 
 Note: - argument inside the createAction() function
 To create an NgRX Action we must pass a string as agrument inside the createAction().

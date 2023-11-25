@@ -12,7 +12,6 @@ import { PercentageCalcPipe } from './pipe/percentage-calc.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 import { GenericFormComponent } from './generic-form/generic-form.component';
-import { TutoModule } from '../modules/tuto/tuto.module';
 
 
 
@@ -30,7 +29,6 @@ import { TutoModule } from '../modules/tuto/tuto.module';
     CommonModule,
     SharedRoutingModule,
     ReactiveFormsModule,
-    TutoModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -40,8 +38,6 @@ import { TutoModule } from '../modules/tuto/tuto.module';
     PercentageCalcPipe,
     HighlightDirective,
     GenericFormComponent,
-    TutoModule,
-
   ]
 })
 export class SharedModule { }

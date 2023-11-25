@@ -1,3 +1,4 @@
+// counter.reducer.ts
 import { createReducer, on } from "@ngrx/store";
 import * as CounterAction from "./counter.action";
 import { counterInitialState } from "./counter.state";
@@ -12,32 +13,39 @@ const _counterReducer = createReducer(
     on(CounterAction.incCounter, (state) => {
         return {
             ...state,
-            counter: state.counter + 1
+            counterState: state.counterState + 1
         }
     }),
     on(CounterAction.decCounter, (state: any) => {
-        if (state.counter > 0) {
+        if (state.counterState > 0) {
             return {
                 ...state,
-                counter: state.counter - 1
+                counterState: state.counterState - 1
             }
         } else {
             return {
                 ...state,
-                counter: 0
+                counterState: counterInitialState.counterState
             }
         }
     }),
     on(CounterAction.resetCounter, (state) => {
         return {
             ...state,
-            counter: 0
+            counterState: counterInitialState.counterState
         }
     }),
     on(CounterAction.customIncCounter, (state, action) => {
         return {
             ...state,
-            counter: state.counter + action.value
+            counterState: state.counterState + action.value
+        }
+    }),
+
+    on(CounterAction.customCounterTxt, (state, action) => {
+        return {
+            ...state,
+            msg: action.value
         }
     })
 

@@ -8,8 +8,8 @@ import { SearchBarComponent } from './controllers/search-bar/search-bar.componen
 
 const routes: Routes = [
   { path: "", component: ProductListComponent },
-  { path: "productDetail", component: ProductDetailComponent },
-  { path: "productSearch", component: SearchBarComponent }
+  { path: "product/productDetail", component: ProductDetailComponent },
+  { path: "product/productSearch", component: SearchBarComponent }
 ];
 
 @NgModule({

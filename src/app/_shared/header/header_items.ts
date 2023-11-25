@@ -9,19 +9,32 @@ export const navBarItems = [
         "link": "/",
         "children": [
             {
-                "title": "New Arrivals",
-                "link": "/products/new"
+                "title": "List Test",
+                "link": "/product/productDetail"
             },
             {
-                "title": "Most Popular",
-                "link": "/products/popular"
+                "title": "Search",
+                "link": "/product/productSearch"
             }
         ]
     },
     {
-        "title": "About",
-        "link": "/about",
-        "children": []
+        "title": "NgRx",
+        "link": "/tuto/ngrx/ngrx_counter",
+        "children": [
+            {
+                "title": "Counter",
+                "link": "/tuto/ngrx/counter"
+            },
+            {
+                "title": "NgRx Counter",
+                "link": "/tuto/ngrx/ngrx_counter"
+            },
+            {
+                "title": "Post",
+                "link": "/tuto/ngrx/post"
+            }
+        ]
     },
     {
         "title": "Admin",

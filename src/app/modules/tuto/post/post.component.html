@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <div class="content m-2">
+        <div class="text-2xl text-center">post works!</div>
+        <div class="flex justify-center">
+            <div class="">
+                <input [(ngModel)]="inp_title" type="text" placeholder="Post Title"
+                    class="border border-orange-400 rounded p-2 mr-3">
+                <input [(ngModel)]="inp_body" type="text" placeholder="Post body"
+                    class="border border-orange-400 rounded p-2 mr-3">
+                <button (click)="addPost()"
+                    class="mt-2 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Add</button>
+            </div>
+        </div>
+
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right">
+                <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">ID</th>
+                        <th scope="col" class="px-6 py-3">UserID</th>
+                        <th scope="col" class="px-6 py-3">Title</th>
+                        <th scope="col" class="px-6 py-3">Content</th>
+                    </tr>
+                </thead>
+                <tbody class="text-xs">
+                    <tr *ngFor="let item of (posts$ | async)"
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th>{{item.id}}</th>
+                        <th>{{item.userId}}</th>
+                        <th>{{item.title}}</th>
+                        <th>{{item.body}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

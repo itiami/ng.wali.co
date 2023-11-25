@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
   { path: 'order', loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule) },
   { path: 'checkout', loadChildren: () => import('./modules/checkout/checkout.module').then(m => m.CheckoutModule) },
+  { path: 'tuto', loadChildren: () => import('./modules/tuto/tuto.module').then(m => m.TutoModule) },
   { path: "**", component: NotFoundComponent },
 ];
 
