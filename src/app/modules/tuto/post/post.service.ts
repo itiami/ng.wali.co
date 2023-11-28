@@ -30,4 +30,18 @@ export class PostService {
   }
 
 
+  createPost(post: IPost): Observable<HttpResponse<any>> {
+    return this.http.post<IPost>(
+      this.URL_ENDPOINT,
+      post,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        observe: 'response'
+      }
+    )
+  }
+
+
 }

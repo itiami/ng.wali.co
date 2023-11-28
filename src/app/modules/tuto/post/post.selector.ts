@@ -16,5 +16,4 @@ export const selectPostError = createSelector(selectPostFutureState, (state) => 
 });
 
 
-export const exampleSelector = createSelector(selectPostFutureState, (state) => state.postArr);
-
+//export const exampleSelector = createSelector(selectPostFutureState, (state) => state.postArr);

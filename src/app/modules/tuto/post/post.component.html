@@ -2,6 +2,12 @@
     <app-header></app-header>
     <div class="content m-2">
         <div class="text-2xl text-center">post works!</div>
+        <div class="text-xl text-center">
+            Total Posts:
+            <span class="font-bold underline underline-offset-2 text-orange-600">
+                {{(posts$ | async)?.length}}
+            </span>
+        </div>
         <div class="flex justify-center">
             <div class="">
                 <input [(ngModel)]="inp_title" type="text" placeholder="Post Title"
@@ -30,6 +36,19 @@
                         <th>{{item.userId}}</th>
                         <th>{{item.title}}</th>
                         <th>{{item.body}}</th>
+                        <th>
+                            <div (click)="editPost({
+                                id: item.id,
+                                userId: item.userId,
+                                title: item.title,
+                                body: item.body
+                            })">
+                                <mat-icon fontIcon="edit" class="text-green-500 text-xl"></mat-icon>
+                            </div>
+                            <div (click)="deletePost(item.id)">
+                                <mat-icon fontIcon="delete" class="text-red-500 text-xl"></mat-icon>
+                            </div>
+                        </th>
                     </tr>
                 </tbody>
             </table>

@@ -19,9 +19,19 @@ export const loadPostsFailure = createAction(
   props<{ error: string }>()
 );
 
+
+
 export const addPost = createAction(
   '[Post] Add Post',
   props<{ post: IPost }>()
 );
 
-// Add more actions for update and delete if needed
+export const editPost = createAction(
+  '[Post] Edit Post',
+  props<{ editPost: IPost }>()
+)
+
+export const deletePost = createAction(
+  '[Post] Delete Post',
+  props<{ postId: number }>()
+)

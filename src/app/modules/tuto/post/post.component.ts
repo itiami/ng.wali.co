@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { IPost, PostState } from './post.state';
-import { addPost, loadingPosts } from './post.action';
+import { IPost } from './post.state';
+import { addPost, loadingPosts, deletePost } from './post.action';
 import { selectAllPosts, selectPostError } from './post.selector';
-import { PostService } from './post.service';
+
 
 
 @Component({
@@ -21,11 +21,10 @@ export class PostComponent implements OnInit {
 
   // post.component.ts
   constructor(
-    private store: Store,
-    private postService: PostService
+    private store: Store
   ) {
     this.posts$ = this.store.select(selectAllPosts);
-    this.error$ = this.store.select(selectPostError);
+    //this.error$ = this.store.select(selectPostError);
   };
 
   ngOnInit(): void {
@@ -46,6 +45,19 @@ export class PostComponent implements OnInit {
     );
   };
 
+
+  editPost(post: IPost) {
+    alert(JSON.stringify({
+      id: post.id,
+      userId: post.userId,
+      title: post.title,
+      body: post.body
+    }, null, 2))
+  }
+
+  deletePost(id: number) {
+    this.store.dispatch(deletePost({ postId: id }));
+  }
 
 
 }

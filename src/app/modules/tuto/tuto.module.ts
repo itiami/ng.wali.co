@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { NgrxCustomCounterComponent } from './ngrx-counter/ngrx-custom-counter/ngrx-custom-counter.component';
 import { PostComponent } from './post/post.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
-
+import { MatIconModule } from "@angular/material/icon";
 
 
 @NgModule({
@@ -29,7 +29,8 @@ import { SharedModule } from 'src/app/_shared/shared.module';
     CommonModule,
     TutoRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    MatIconModule
   ],
   exports: [
     CounterButtonsComponent,
