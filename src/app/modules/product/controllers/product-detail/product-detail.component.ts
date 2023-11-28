@@ -5,7 +5,6 @@ import { Store } from "@ngrx/store";
 import * as ProductActions from "../../product.action";
 import { Observable } from 'rxjs';
 import { ProductState } from '../../product.state';
-import { AppState } from 'src/app/ngrx-app-store/app.state';
 import { ProductList } from 'src/app/_model/product-list.model';
 import { ICounterState } from 'src/app/modules/tuto/ngrx-counter/counter.state';
 

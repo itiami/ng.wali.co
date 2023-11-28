@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import * as CounterActions from 'src/app/modules/tuto/ngrx-counter/counter.action';
 import { selectCounterMsg } from '../counter.selectors';
 import { ICounterState, counterInitialState } from '../counter.state';
-import { AppState } from 'src/app/ngrx-app-store/app.state';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({

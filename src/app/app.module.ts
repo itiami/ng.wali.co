@@ -15,14 +15,13 @@ import { AuthModule } from './modules/auth/auth.module';
 import { CartModule } from './modules/cart/cart.module';
 import { SharedModule } from './_shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AboutComponent } from './modules/about/about.component';
 import { TutoModule } from './modules/tuto/tuto.module';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { counterReducer } from './modules/tuto/ngrx-counter/counter.reducer';
-import { postReducer } from './modules/tuto/post/post.reducer';
-import { AppState } from './ngrx-app-store/app.state';
+import { AppReducer } from './ngrx-app-store/app.state';
+import { PostEffects } from './modules/tuto/post/post.effects';
 
 
 
@@ -51,8 +50,8 @@ import { AppState } from './ngrx-app-store/app.state';
       counter: counterReducer,
       posts: postReducer
     }), */
-    StoreModule.forRoot(AppState),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot(AppReducer),
+    EffectsModule.forRoot([PostEffects]),
     TutoModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

@@ -3,9 +3,18 @@
 
 import { counterReducer } from "../modules/tuto/ngrx-counter/counter.reducer";
 import { postReducer } from "../modules/tuto/post/post.reducer";
+import { ICounterState } from "../modules/tuto/ngrx-counter/counter.state";
+import { IPost, PostState } from "../modules/tuto/post/post.state";
 
 
-export const AppState = {
+// app.state.ts
+export const AppReducer = {
     counter: counterReducer,
-    posts: postReducer
+    appReducer_posts: postReducer
 }
+
+
+/* export interface IAppState {
+    counter: ICounterState;
+    appState_posts: IPost;
+} */

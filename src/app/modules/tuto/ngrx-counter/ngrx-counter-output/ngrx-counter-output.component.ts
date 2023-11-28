@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { selectCounterNum } from '../counter.selectors';
 import { ICounterState } from '../counter.state';
-import { AppState } from 'src/app/ngrx-app-store/app.state';
 
 @Component({
   selector: 'app-ngrx-counter-output',

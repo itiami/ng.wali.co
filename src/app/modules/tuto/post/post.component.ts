@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Post } from './post.state';
-import * as PostActions from './post.action';
-import * as PostSelectors from './post.selector';
+import { IPost, PostState } from './post.state';
+import { addPost, loadingPosts } from './post.action';
+import { selectAllPosts, selectPostError } from './post.selector';
+import { PostService } from './post.service';
+
 
 @Component({
   selector: 'app-post',
@@ -12,28 +14,39 @@ import * as PostSelectors from './post.selector';
 })
 export class PostComponent implements OnInit {
 
-  posts$!: Observable<Post[]>;
+  posts$!: Observable<IPost[]>;
   error$!: any;
   inp_title!: string;
   inp_body!: string;
 
-  constructor(private store: Store) { }
+  // post.component.ts
+  constructor(
+    private store: Store,
+    private postService: PostService
+  ) {
+    this.posts$ = this.store.select(selectAllPosts);
+    this.error$ = this.store.select(selectPostError);
+  };
 
   ngOnInit(): void {
-    this.posts$ = this.store.select(PostSelectors.selectAllPosts);
-    this.error$ = this.store.select(PostSelectors.selectPostError);
-    this.store.dispatch(PostActions.loadPosts());
-  }
+    this.store.dispatch(loadingPosts({ loading: true }));
+  };
 
   addPost() {
-    const newPost: Post = {
+    const newPost: IPost = {
       userId: Math.floor(Math.random() * 100),
       id: Math.floor(Math.random() * 1000),
       title: this.inp_title,
       body: this.inp_body,
     };
-    this.store.dispatch(PostActions.addPost({ post: newPost }));
-  }
+    this.store.dispatch(
+      addPost(
+        { post: newPost }
+      )
+    );
+  };
+
+
 
 }
 

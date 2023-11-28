@@ -1,11 +1,17 @@
 import { createAction, props } from '@ngrx/store';
-import { Post } from './post.state';
+import { IPost } from './post.state';
 
-export const loadPosts = createAction('[Post] Load Posts');
+
+// post.action.ts
+
+export const loadingPosts = createAction(
+  '[Post] Load Posts',
+  props<{ loading: boolean }>()
+);
 
 export const loadPostsSuccess = createAction(
   '[Post] Load Posts Success',
-  props<{ posts: Post[] }>()
+  props<{ posts: IPost[] }>()
 );
 
 export const loadPostsFailure = createAction(
@@ -15,7 +21,7 @@ export const loadPostsFailure = createAction(
 
 export const addPost = createAction(
   '[Post] Add Post',
-  props<{ post: Post }>()
+  props<{ post: IPost }>()
 );
 
 // Add more actions for update and delete if needed
