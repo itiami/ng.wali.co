@@ -15,7 +15,8 @@ export interface PostState {
 export const initialPostState: PostState = {
     error: null,
     loading: false,
-    postArr:
+    postArr: []
+    /* postArr:
         [
             {
                 "userId": 5100,
@@ -29,6 +30,6 @@ export const initialPostState: PostState = {
                 "title": "Post_2",
                 "body": "Post_2 Content"
             },
-        ]
+        ] */
 };
 

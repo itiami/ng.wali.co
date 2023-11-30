@@ -9,9 +9,11 @@ import { NgrxCounterComponent } from './ngrx-counter/ngrx-counter/ngrx-counter.c
 import { NgrxCounterOutputComponent } from './ngrx-counter/ngrx-counter-output/ngrx-counter-output.component';
 import { FormsModule } from '@angular/forms';
 import { NgrxCustomCounterComponent } from './ngrx-counter/ngrx-custom-counter/ngrx-custom-counter.component';
-import { PostComponent } from './post/post.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
 import { MatIconModule } from "@angular/material/icon";
+import { EditPostComponent } from './post/edit-post/edit-post.component';
+import { AddPostComponent } from './post/add-post/add-post.component';
+import { PostListComponent } from './post/post-list/post-list.component';
 
 
 @NgModule({
@@ -23,14 +25,16 @@ import { MatIconModule } from "@angular/material/icon";
     NgrxCounterComponent,
     NgrxCounterOutputComponent,
     NgrxCustomCounterComponent,
-    PostComponent,
+    EditPostComponent,
+    AddPostComponent,
+    PostListComponent,
   ],
   imports: [
     CommonModule,
     TutoRoutingModule,
     FormsModule,
     SharedModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     CounterButtonsComponent,
@@ -39,7 +43,6 @@ import { MatIconModule } from "@angular/material/icon";
     NgrxCounterButtonComponent,
     NgrxCounterComponent,
     NgrxCounterOutputComponent,
-    PostComponent,
   ]
 })
 export class TutoModule { }

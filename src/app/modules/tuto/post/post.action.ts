@@ -28,10 +28,21 @@ export const addPost = createAction(
 
 export const editPost = createAction(
   '[Post] Edit Post',
-  props<{ editPost: IPost }>()
+  props<{ post: IPost }>()
 )
 
 export const deletePost = createAction(
   '[Post] Delete Post',
+  props<{ postId: number }>()
+)
+
+
+export const totalPost = createAction(
+  '[Post] total Post',
+  props<{ total: IPost[] }>()
+)
+
+export const getPostById = createAction(
+  '[Post] total Post',
   props<{ postId: number }>()
 )

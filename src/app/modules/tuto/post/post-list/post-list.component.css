@@ -1,0 +1,11 @@
+.matIcon {
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+  transition: box-shadow 1s;
+}
+
+.matIcon:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgb(224, 224, 224);
+}
