@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { IPost } from '../post.state';
 import { loadingPosts, deletePost, editPost } from '../post.action';
 import { selectAllPosts, selectPostError } from '../post.selector';
@@ -16,15 +16,16 @@ import { EditPostComponent } from '../edit-post/edit-post.component';
 export class PostListComponent implements OnInit {
 
   posts$!: Observable<IPost[]>;
-  postsTotal?: any;
   error$!: any;
-
+  postsTotal!: any;
+  itemParPage: number = 8;
+  slice = (start: number, end?: number) => map((arr: any[]) => arr.slice(start, end));
   // post.component.ts
   constructor(
     private store: Store,
     private dialog: MatDialog
   ) {
-    this.posts$ = this.store.select(selectAllPosts);
+    this.posts$ = this.store.select(selectAllPosts).pipe(this.slice(95,100));
     this.error$ = this.store.select(selectPostError);
   };
 

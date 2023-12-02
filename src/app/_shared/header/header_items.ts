@@ -20,19 +20,23 @@ export const navBarItems = [
     },
     {
         "title": "NgRx",
-        "link": "/tuto/ngrx/ngrx_counter",
+        "link": "#",
         "children": [
+            {
+                "title": "Angular Material Library",
+                "link": "/tuto/materialLibrary"
+            },
             {
                 "title": "Counter",
                 "link": "/tuto/ngrx/counter"
             },
             {
                 "title": "NgRx Counter",
-                "link": "/tuto/ngrx/ngrx_counter"
+                "link": "/ngrxCounter"
             },
             {
                 "title": "Post",
-                "link": "/tuto/ngrx/post"
+                "link": "/post"
             }
         ]
     },

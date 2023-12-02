@@ -33,5 +33,41 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.nInput {
+  padding: 9px;
+  font-size: 17px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: transparent transparent #d6d6d6ff #d6d6d6ff; /* top right bottm left */
+  box-shadow: -1px 2px 1px #c4c3c3;
+}
+.nInput:focus {
+  outline: none;
+}
+
+.nButton {
+  cursor: pointer;
+  color: #ffffffff;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(119, 117, 116);
+  background-color: rgba(194, 98, 2, 0.922);
+  box-shadow: -1px 0px 1px #000000;
+}
+.nButton:hover {
+  background-color: #ffffffff;
+  color: #c24509ff;
+  border: 1px solid #c24509ff;
+}

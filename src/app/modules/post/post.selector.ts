@@ -3,7 +3,7 @@ import { PostState } from './post.state';
 
 
 // post.selector.ts
-export const selectPostFutureState = createFeatureSelector<PostState>('appReducer_posts');
+export const selectPostFutureState = createFeatureSelector<PostState>('posts');
 
 
 export const selectAllPosts = createSelector(selectPostFutureState, (state) => {

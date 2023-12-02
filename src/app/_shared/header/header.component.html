@@ -25,16 +25,14 @@
     </div>
 
     <!-- Header Nav Menu -->
-    <div class="bottom_bar">
+    <div class=" bg-sky-700  flex justify-between p-3 m-0">
         <div>
             <nav class="text-white">
                 <ul class="flex space-x-4">
                     <li *ngFor="let item of menuItems" class="relative" [class.group]="item.children.length">
-                        <a [routerLink]="item.link"
-                            class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">{{
+                        <a [routerLink]="item.link" class="px-3 py-2 rounded-md text-sm font-medium">{{
                             item.title }}</a>
-                        <ul *ngIf="item.children.length"
-                            class="absolute hidden group-hover:block bg-gray-700 border border-gray-600">
+                        <ul *ngIf="item.children.length" class="fixed hidden group-hover:block bg-sky-700  z-50">
                             <li *ngFor="let child of item.children" class="px-3 py-2 hover:bg-gray-600">
                                 <a [routerLink]="child.link" class="block">{{ child.title }}</a>
                             </li>

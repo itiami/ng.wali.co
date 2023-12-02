@@ -1,11 +1,11 @@
+<app-header></app-header>
 <div class="wrapper">
-    <app-header></app-header>
     <div class="content m-2">
         <div class="flex justify-center m-2">
             <div class="flex justify-center items-center gap-2 text-2xl">
                 <span>Total Posts:</span>
                 <span class="font-bold underline underline-offset-2 text-orange-600 cursor-pointer"
-                    [routerLink]="['/tuto/ngrx/post']">
+                    [routerLink]="['/post']">
                     {{(posts$ | async)?.length}}
                 </span>
                 <span class="flex items-center justify-center" [routerLink]="['add']">
@@ -38,13 +38,13 @@
                         <th>{{item.body}}</th>
                         <th>
                             <div (click)="openDialog(item)">
-                                <mat-icon fontIcon="edit" class="text-green-500 text-xl"></mat-icon>
+                                <mat-icon fontIcon="edit" class="text-green-500 text-xl cursor-pointer"></mat-icon>
                             </div>
                             <!-- <div [routerLink]="['edit', item.id]" routerLinkActive="router-link-active">
                                 <mat-icon fontIcon="edit" class="text-green-500 text-xl"></mat-icon>
                             </div> -->
                             <div (click)="deletePost(item.id)">
-                                <mat-icon fontIcon="delete" class="text-red-500 text-xl"></mat-icon>
+                                <mat-icon fontIcon="delete" class="text-red-500 text-xl cursor-pointer"></mat-icon>
                             </div>
                         </th>
                     </tr>

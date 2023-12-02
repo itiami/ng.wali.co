@@ -15,6 +15,8 @@ const routes: Routes = [
   { path: 'order', loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule) },
   { path: 'checkout', loadChildren: () => import('./modules/checkout/checkout.module').then(m => m.CheckoutModule) },
   { path: 'tuto', loadChildren: () => import('./modules/tuto/tuto.module').then(m => m.TutoModule) },
+  { path: 'post', loadChildren: () => import('./modules/post/post.module').then(m => m.PostModule) },
+  { path: 'ngrxCounter', loadChildren: () => import('./modules/counter/counter.module').then(m => m.CounterModule) },
   { path: "**", component: NotFoundComponent },
 ];
 

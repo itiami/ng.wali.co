@@ -4,6 +4,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminModule } from './modules/admin/admin.module';
@@ -14,14 +15,14 @@ import { OrderModule } from './modules/order/order.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { CartModule } from './modules/cart/cart.module';
 import { SharedModule } from './_shared/shared.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { AboutComponent } from './modules/about/about.component';
 import { TutoModule } from './modules/tuto/tuto.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppReducer } from './ngrx-app-store/app.state';
-import { PostEffects } from './modules/tuto/post/post.effects';
+import { PostModule } from './modules/post/post.module';
+import { CounterModule } from './modules/counter/counter.module';
+
 
 
 
@@ -48,21 +49,21 @@ import { PostEffects } from './modules/tuto/post/post.effects';
       counter: counterReducer,
       posts: postReducer
     }), */
-    StoreModule.forRoot(AppReducer),
-    EffectsModule.forRoot([PostEffects]),
+    //StoreModule.forRoot(AppReducer), 
+    /*  this method all state i.g user, product, category etc will load while application start.
+    if so the main.js file gets bigger on load. which might case and issue of slow loading.
+    so it's preferable to load the state on click of the relevant state 
+    */
+    StoreModule.forRoot({}),
+    //EffectsModule.forRoot([PostEffects]),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({}),
     TutoModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: !isDevMode(), // Restrict extension to log-only mode
-      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
-      trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
-      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
-      connectOutsideZone: true // If set to true, the connection is established outside the Angular zone for better performance
-    }),
+    PostModule,
+    CounterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [
-  ]
+  exports: []
 })
 export class AppModule { }

@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="flex justify-center m-2">
+    <div class="flex flex-col gap-2">
+        <!-- Material Snackbar As Attribute -->
+        <div class="border border-zinc-500 p-4">
+            <h3>Material Snackbar</h3>
+            <div class="flex gap-2 ">
+                <input class="nInput" value="Disco party!" #message>
+                <input class="nInput" value="Dance" #action>
+                <button (click)="openSnackBar(message.value, action.value)" class="nButton">
+                    Show snack-bar
+                </button>
+            </div>
+        </div>
+
+        <!-- Material Dialog -->
+        <div class="border border-orange-500 p-4 flex flex-col gap-2">
+            <button (click)="openDialog()" class="nButton">MatDialog Open</button>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Outline form field</mat-label>
+                    <input matInput placeholder="Placeholder">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>

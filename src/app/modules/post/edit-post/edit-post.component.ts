@@ -1,10 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { IPost } from '../post.state';
-import { addPost, editPost, getPostById } from '../post.action';
-import { selectAllPosts, selectPostById } from '../post.selector';
+import { editPost, } from '../post.action';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-post',
@@ -25,7 +24,8 @@ export class EditPostComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private matDialogRef: MatDialogRef<EditPostComponent>, @Inject(MAT_DIALOG_DATA) public data: IPost
+    private matDialogRef: MatDialogRef<EditPostComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IPost
   ) { };
 
 
