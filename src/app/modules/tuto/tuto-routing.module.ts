@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CounterComponent } from './input-output/counter/counter.component';
 import { PopupComponent } from './popup/popup.component';
 import { NformsComponent } from './nforms/nforms.component';
+import { TestComponent } from './ng-lifecycle-hooks/ng-life';
 
 
 const routes: Routes = [

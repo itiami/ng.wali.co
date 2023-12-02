@@ -4,18 +4,18 @@
     <form [formGroup]="nForm" class="nForm">
         <div>
             <input type="text" formControlName="name" placeholder="name">
-            <div *ngIf="nForm.get('name')?.errors?.['required']">Name is required.</div>
-            <div *ngIf="nForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters long.</div>
+            <div *ngIf="name?.errors?.['required']">Name is required.</div>
+            <div *ngIf="name?.errors?.['minlength']">Name must be at least 3 characters long.</div>
         </div>
         <div>
             <input type="text" formControlName="email" placeholder="email">
-            <div *ngIf="nForm.get('email')?.errors?.['required']">Email is required.</div>
-            <div *ngIf="nForm.get('email')?.errors?.['minlength']">Enter a valid Email Address</div>
+            <div *ngIf="email?.errors?.['required']">Email is required.</div>
+            <div *ngIf="email?.errors?.['minlength']">Enter a valid Email Address</div>
         </div>
         <div>
             <input type="text" formControlName="password" placeholder="password">
-            <div *ngIf="nForm.get('password')?.errors?.['required']">Password is required.</div>
-            <div *ngIf="nForm.get('password')?.errors?.['minlength']">Email Length not Correct</div>
+            <div *ngIf="password?.errors?.['required']">Password is required.</div>
+            <div *ngIf="password?.errors?.['minlength']">Email Length not Correct</div>
         </div>
         <button (click)="onSubmit()" type="submit" [disabled]="!nForm.valid">
             Submit</button>
