@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PopupContentComponent } from './popup-content/popup-content.component';
+import { NformsComponent } from './nforms/nforms.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PopupContentComponent } from './popup-content/popup-content.component';
     CounterOutputComponent,
     PopupComponent,
     PopupContentComponent,
+    NformsComponent,
 
   ],
   imports: [

@@ -42,6 +42,51 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.nForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.nForm input {
+  padding: 4px;
+  border-width: 0px 0px 2px 0px;
+  border-color: orange;
+  border-radius: 5px;
+}
+
+.nForm input:focus {
+  outline: none;
+  border-width: 0px 0px 5px 0px;
+  border-color: rgb(255, 30, 0);
+  border-radius: 5px;
+}
+
+.nForm button {
+  cursor: pointer;
+  color: #ffffffff;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(119, 117, 116);
+  background-color: rgba(194, 98, 2, 0.922);
+  box-shadow: -1px 0px 1px #000000;
+}
+.nForm button:hover {
+  background-color: #ffffffff;
+  color: #c24509ff;
+  border: 1px solid #c24509ff;
+}
+
+.nForm button:disabled {
+  background-color: rgba(148, 146, 144, 0.922);
+  opacity: 40%;
+  color: black;
+  border: none;
+  box-shadow: none;
+  cursor: default;
+}
+
 .nInput {
   padding: 9px;
   font-size: 17px;
@@ -70,4 +115,13 @@ body {
   background-color: #ffffffff;
   color: #c24509ff;
   border: 1px solid #c24509ff;
+}
+
+.nButton:disabled {
+  background-color: rgba(148, 146, 144, 0.922);
+  opacity: 40%;
+  color: black;
+  border: none;
+  box-shadow: none;
+  cursor: default;
 }

@@ -19,13 +19,23 @@ export const navBarItems = [
         ]
     },
     {
-        "title": "NgRx",
-        "link": "#",
+        "title": "Tuto",
+        "link": "/",
         "children": [
             {
                 "title": "Angular Material Library",
                 "link": "/tuto/materialLibrary"
             },
+            {
+                "title": "Form Group",
+                "link": "/tuto/forms"
+            },
+        ]
+    },
+    {
+        "title": "NgRx",
+        "link": "#",
+        "children": [
             {
                 "title": "Counter",
                 "link": "/tuto/ngrx/counter"
