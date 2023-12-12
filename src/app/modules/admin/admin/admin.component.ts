@@ -13,7 +13,7 @@ import { ProductComponent } from '../product/product.component';
 })
 export class AdminComponent implements OnInit {
   //currentComponent: string = 'ProductComponent';
-  currentComponent: string = 'UserComponent';
+  currentComponent: string = 'ProductComponent';
   display: Boolean = false;
 
   formConfig = [

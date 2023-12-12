@@ -12,8 +12,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class EditPostComponent implements OnInit {
 
-  form!: FormGroup;
-  isUpdateMode!: boolean;
+  /*   form!: FormGroup;
+    isUpdateMode!: boolean; */
 
   //post!: IPost;
   inp_id!: number;
@@ -25,16 +25,17 @@ export class EditPostComponent implements OnInit {
   constructor(
     private store: Store,
     private matDialogRef: MatDialogRef<EditPostComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IPost
+    @Inject(MAT_DIALOG_DATA)
+    private postData: IPost
   ) { };
 
 
 
   ngOnInit(): void {
-    this.inp_id = this.data.id;
-    this.inp_userId = this.data.userId;
-    this.inp_title = this.data.title;
-    this.inp_body = this.data.body;
+    this.inp_id = this.postData.id;
+    this.inp_userId = this.postData.userId;
+    this.inp_title = this.postData.title;
+    this.inp_body = this.postData.body;
   }
 
 

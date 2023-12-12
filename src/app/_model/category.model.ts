@@ -6,3 +6,11 @@ export class Category {
         public product?: [],
     ) { }
 }
+
+
+export interface ICategory {
+    mainCat?: String,
+    subCat?: String,
+    childCat?: String,
+    product?: [],
+}

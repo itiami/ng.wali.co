@@ -9,7 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactComponent } from './contact/contact.component';
 import { PercentageCalcPipe } from './pipe/percentage-calc.pipe';
-import { HighlightDirective } from './directives/highlight.directive';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 import { GenericFormComponent } from './generic-form/generic-form.component';
 
@@ -22,7 +21,6 @@ import { GenericFormComponent } from './generic-form/generic-form.component';
     NotFoundComponent,
     ContactComponent,
     PercentageCalcPipe,
-    HighlightDirective,
     GenericFormComponent,
   ],
   imports: [
@@ -36,7 +34,6 @@ import { GenericFormComponent } from './generic-form/generic-form.component';
     FooterComponent,
     NotFoundComponent,
     PercentageCalcPipe,
-    HighlightDirective,
     GenericFormComponent,
   ]
 })

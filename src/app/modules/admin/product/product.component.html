@@ -1,6 +1,6 @@
-<p>product works!</p>
-
-
+<div class="flex justify-end p-4">
+    <button class="nButton" (click)="openDialog()">Add Product</button>
+</div>
 
 <div class="ProdListContainer">
     <div *ngFor="let item of productList">
@@ -10,11 +10,11 @@
                 <div>{{item.title}}</div>
                 <div>{{item.price}} <span class="eurSymble">€</span></div>
                 <div>inStock: {{item.quantity}}</div>
-                <button class="cartBtn" (click)="addToCart({
+                <button class="nButton" (click)="update({
                     id:item._id,
                     title: item.title,
                     price: item.price
-                })">Add to Cart</button>
+                })">Update Product</button>
 
             </div>
         </div>

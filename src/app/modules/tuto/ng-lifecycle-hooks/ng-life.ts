@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { codeBlock } from "./for-html";
+import { operators } from './symbols';
+import * as Prism from 'prismjs';
+import 'prismjs/components/prism-typescript';
 
 @Component({
     selector: 'app-test',
     templateUrl: './ng-life.html',
-    styleUrls: ['./ng-life.css']
+    styleUrls: ['./ng-life.css'],
+    styles: [],
 })
-export class TestComponent implements OnInit {
+export class NgLifeCycleHooks implements OnInit, AfterViewInit {
+
+    forHtml = codeBlock;
 
     // block_1
     time_1!: string;
@@ -18,7 +25,7 @@ export class TestComponent implements OnInit {
 
     // block_3
     constructor() {
-        this.time_1 = "Block_3. Hello..Constructor: " + Date.now().toLocaleString()
+        this.time_1 = "Block_3. Hello..Constructor: " + Date.now().toLocaleString();
     };
 
     // block_4
@@ -28,11 +35,24 @@ export class TestComponent implements OnInit {
         console.log(this.testFn());
         console.log(this.time_2);
     }
+
+    ngAfterViewInit() {
+        Prism.highlightAll();
+    }
+
+
+    containsOperator(text: string): boolean {
+        return operators.some((operator: any) => {
+            // Escape special regex characters in the operator
+            const escapedOperator = operator.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            // Create a regex to search for the operator
+            const regex = new RegExp(`\\b${escapedOperator}\\b`);
+            return regex.test(text);
+        });
+    }
+
+
+
 }
 
-/* Execution Order
-    1. Constructor (Block_3)
-    2. Property Initialization (Block_1)
-    3. ngOnInit (Block_4) Method Call within ngOnInit (Block_2 is executed as part of Block_4 when testFn is called)
 
-*/

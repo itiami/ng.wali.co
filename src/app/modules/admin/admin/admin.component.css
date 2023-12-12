@@ -24,7 +24,7 @@
 }
 
 .rightPannel {
-  padding: 15px;
+  width: 100dvw;
 }
 
 .cat {
@@ -42,9 +42,4 @@ input {
   background-color: #ececec;
   padding: 5px;
   border-radius: 5px;
-}
-
-.ProductComponent {
-  display: flex;
-  flex-direction: row;
 }

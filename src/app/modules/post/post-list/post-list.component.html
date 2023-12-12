@@ -11,6 +11,13 @@
                 <span class="flex items-center justify-center" [routerLink]="['add']">
                     <mat-icon fontIcon="post_add" class="text-green-700 matIcon"></mat-icon>
                 </span>
+                <span>
+                    <div mat-form-field appearance="outline" class="flex items-center justify-center">
+                        <input #nItems (keyup.enter)="onEnter($event)" placeholder="10" type="number"
+                            [(ngModel)]="testInput" class="border-b-4 border-indigo-500 w-20 rounded-md text-center">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    </div>
+                </span>
             </div>
         </div>
 

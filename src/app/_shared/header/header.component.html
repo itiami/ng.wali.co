@@ -30,9 +30,9 @@
             <nav class="text-white">
                 <ul class="flex space-x-4">
                     <li *ngFor="let item of menuItems" class="relative" [class.group]="item.children.length">
-                        <a [routerLink]="item.link" class="px-3 py-2 rounded-md text-sm font-medium">{{
-                            item.title }}</a>
-                        <ul *ngIf="item.children.length" class="fixed hidden group-hover:block bg-sky-700  z-50">
+                        <a [routerLink]="item.link" class="px-3 py-2 rounded-md text-sm font-medium">
+                            {{ item.title }}</a>
+                        <ul *ngIf="item.children.length" class="fixed hidden group-hover:block bg-sky-700 z-50">
                             <li *ngFor="let child of item.children" class="px-3 py-2 hover:bg-gray-600">
                                 <a [routerLink]="child.link" class="block">{{ child.title }}</a>
                             </li>
@@ -47,19 +47,3 @@
     </div>
     <div>{{_inpUsername}}</div>
 </header>
-
-
-<!-- 
-
-How to use in Module..
-
-<div class="wrapper">
-    <app-header></app-header>
-    <div class="content">
-        <p>The Content of the Module..</p>
-    </div>
-    <app-footer></app-footer>
-</div>
-
-
- -->

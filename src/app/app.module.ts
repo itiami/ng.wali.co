@@ -22,14 +22,15 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PostModule } from './modules/post/post.module';
 import { CounterModule } from './modules/counter/counter.module';
-
-
-
+import { AddCategoryComponent } from './modules/category/add-category/add-category.component';
+import { EditCategoryComponent } from './modules/category/edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,12 +56,12 @@ import { CounterModule } from './modules/counter/counter.module';
     so it's preferable to load the state on click of the relevant state 
     */
     StoreModule.forRoot({}),
-    //EffectsModule.forRoot([PostEffects]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({}),
     TutoModule,
     PostModule,
     CounterModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

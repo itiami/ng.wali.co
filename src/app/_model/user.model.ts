@@ -5,3 +5,9 @@ export class User {
         public email?: String,
     ) { }
 }
+
+export interface IUser {
+    username?: String,
+    password?: String,
+    email?: String,
+}

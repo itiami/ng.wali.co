@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { ProductList } from "../_model/product-list.model";
+import { IProduct, ProductList } from "../_model/product-list.model";
 import { environment } from 'src/environments/environment';
 import { Category } from '../_model/category.model';
 
@@ -15,13 +15,13 @@ export class ProductListService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts(): Observable<ProductList> {
-    return this.http.get(`${this.URL_ENDPOINT}product`);
+  getAllProducts(): Observable<IProduct> {
+    return this.http.get<IProduct>(`${this.URL_ENDPOINT}product`);
   }
 
 
-  productDetail(product: ProductList): Observable<any> {
-    return this.http.post(
+  productDetail(product: IProduct): Observable<any> {
+    return this.http.post<IProduct>(
       `${this.URL_ENDPOINT}findOne`,
       product,
       {

@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div class="data">
+    <div>
+        <input placeholder="#inp_3" #inp_3>
+        <button (click)="onClick()">Click</button>
+        <input placeholder="onPressEnter($event)" (keyup.enter)="onPressEnter($event)">
+        <input placeholder="ngModel" [(ngModel)]="toAndFrom">
+        <button (click)="toAndFromEvent()">Click</button>
+
+
+        <div>
+            <div class="font-bold text-4xl">ngIf else</div>
+            <div *ngIf="courses.length; then coursesList; else noCourses">
+            </div>
+
+            <ng-template #coursesList>
+                <h1>All courses available</h1>
+            </ng-template>
+
+            <ng-template #noCourses>
+                <h1>No courses available.</h1>
+            </ng-template>
+        </div>
+        <div>
+            <ng-template *ngIf="courses.length; then coursesList; else noCourses">
+            </ng-template>
+
+            <ng-template #coursesList>
+                <h1>All courses available</h1>
+            </ng-template>
+
+            <ng-template #noCourses>
+                <h1>No courses available.</h1>
+            </ng-template>
+        </div>
+    </div>
+
+
+</div>

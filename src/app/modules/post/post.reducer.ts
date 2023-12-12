@@ -3,6 +3,7 @@ import { initialPostState } from './post.state';
 import { addPost, deletePost, editPost, getPostById, loadPostsFailure, loadPostsSuccess, loadingPosts, totalPost } from './post.action';
 
 
+export const postReducerKey = 'post';
 
 // post.reducer.ts
 export const postReducer = createReducer(

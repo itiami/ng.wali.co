@@ -23,6 +23,14 @@ export const navBarItems = [
         "link": "/",
         "children": [
             {
+                "title": "Data Binding and Event Listener",
+                "link": "/tuto/dataBinding"
+            },
+            {
+                "title": "Angular Lifecycle Hooks",
+                "link": "/tuto/ngLifeCycleHooks"
+            },
+            {
                 "title": "Angular Material Library",
                 "link": "/tuto/materialLibrary"
             },

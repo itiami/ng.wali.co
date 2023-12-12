@@ -1,4 +1,7 @@
 // post.state.ts
+
+export const postFeatureName = "post";
+
 export interface IPost {
     userId: number;
     id: number;

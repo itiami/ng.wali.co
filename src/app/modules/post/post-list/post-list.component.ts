@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { IPost } from '../post.state';
 import { loadingPosts, deletePost, editPost } from '../post.action';
 import { selectAllPosts, selectPostError } from '../post.selector';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 
 
@@ -18,14 +18,23 @@ export class PostListComponent implements OnInit {
   posts$!: Observable<IPost[]>;
   error$!: any;
   postsTotal!: any;
-  itemParPage: number = 8;
+
+  testInput = 15;
+
+  @ViewChild('nItems')
+  nItems!: ElementRef<HTMLInputElement>;
+
+  onEnter(event: any) {
+    console.log(event.target.value);
+  }
+
   slice = (start: number, end?: number) => map((arr: any[]) => arr.slice(start, end));
-  // post.component.ts
+
   constructor(
     private store: Store,
     private dialog: MatDialog
   ) {
-    this.posts$ = this.store.select(selectAllPosts).pipe(this.slice(95,100));
+    this.posts$ = this.store.select(selectAllPosts).pipe(this.slice(0, 10));
     this.error$ = this.store.select(selectPostError);
   };
 
@@ -35,14 +44,14 @@ export class PostListComponent implements OnInit {
   };
 
 
-  editPost(post: IPost) {
+  /* editPost(post: IPost) {
     alert(JSON.stringify({
       id: post.id,
       userId: post.userId,
       title: post.title,
       body: post.body
     }, null, 2))
-  }
+  } */
 
   deletePost(id: number) {
     this.store.dispatch(deletePost({ postId: id }));
@@ -64,6 +73,8 @@ export class PostListComponent implements OnInit {
         console.log("afterClosed(): ", 'clicked outside');
       }
     });
+
+
   }
 
 

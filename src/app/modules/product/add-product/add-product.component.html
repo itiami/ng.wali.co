@@ -1,0 +1,28 @@
+<div class="">
+    <div class="">
+        <h3 class="text-center font-bold text-2xl">Add Product</h3>
+        <form action="" [formGroup]="formGroup">
+            <div class="">
+                <div class="">
+                    <div class="flex justify-center items-center gap-2">
+                        <label for="setCategory">Choose a category:</label>
+                        <select formControlName="setCategory" mat-option [value]="SelectCategory"
+                            class="px-6 py-2 rounded">
+                            <option *ngFor="let cat of catList" [value]="cat.value">{{cat.value}}</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col">
+                        <input formControlName="title" class="nInput" type="text" placeholder="title">
+                        <input formControlName="price" class="nInput" type="text" placeholder="price">
+                        <input formControlName="imageUrl" class="nInput" type="text" placeholder="image url">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex">
+                <button class="bg-blue-500 w-1/2 p-4" (click)="dialogOK()">OK</button>
+                <button class="bg-orange-500 w-1/2 p-4" (click)="dialogCancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

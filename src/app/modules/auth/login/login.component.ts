@@ -10,9 +10,6 @@ import { GoogleAuthService } from 'src/app/_services/google-auth.service';
 import firebase from 'firebase/compat/app';
 
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,6 +18,7 @@ import firebase from 'firebase/compat/app';
 
   ]
 })
+
 export class LoginComponent implements OnInit {
 
   username: String = "";

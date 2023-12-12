@@ -1,28 +1,22 @@
-import { ProductList } from "../../_model/product-list.model";
+import { EntityAdapter, EntityState, createEntityAdapter } from "@ngrx/entity";
+import { ProductList, IProduct } from "src/app/_model/product-list.model";
 
-export interface IProduct {
-    title: String;
-    weight: String;
-    quality: String;
-    detail: String;
-    price: number;
-    imageUrl: String;
-    category: String;
-}
 
-export interface ProductState {
-    products: IProduct[];
-    error: string
-}
+export const productFutureName = "product";
 
 
 
-/* export const initialProductState: ProductState = {
-    product: [],
-}; */
+export interface ProductState extends EntityState<IProduct> { }
 
 
-export const productInitialState = [
+export const productAdapter: EntityAdapter<IProduct> = createEntityAdapter<IProduct>()
+
+
+
+export const initialProductState: ProductState = productAdapter.getInitialState();
+
+
+const initialProductStateX = [
     {
         "_id": "655f6e83adca3b88d0af2cae",
         "title": "Broccoli",
@@ -45,3 +39,6 @@ export const productInitialState = [
     }
 
 ]
+
+
+

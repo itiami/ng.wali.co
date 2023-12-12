@@ -1,34 +1,18 @@
-<div class="registration">
-    <div class="container">
+<div class="flex justify-center h-screen items-center">
+    <div class="w-72">
         <h2>Registration Form</h2>
-        <form action="#" method="post" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input [(ngModel)]="userData.username" type="text" id="username" name="username" required>
-                <p>{{userData.username}}</p>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input [(ngModel)]="userData.email" type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input [(ngModel)]="userData.password" type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password:</label>
-                <input [(ngModel)]="userData.password" type="password" id="confirm-password" name="confirm-password"
-                    required>
-            </div>
-            <div class="form-group">
-                <button type="submit" [disabled]="!userData.username || !userData.password">Register
-                </button>
-            </div>
+        <form action="#" method="post" (ngSubmit)="onSubmit()" class="nForm">
+            <input [(ngModel)]="userData.username" type="text" id="username" name="username" required>
+            <!--  <p>{{userData.username}}</p> -->
+            <input [(ngModel)]="userData.email" type="email" id="email" name="email" required>
+            <input [(ngModel)]="userData.password" type="password" id="password" name="password" required>
+            <input [(ngModel)]="userData.password" type="password" id="confirm-password" name="confirm-password"
+                required>
+            <button type="submit" [disabled]="!userData.username || !userData.password">Register
+            </button>
         </form>
 
         <!-- GET Request to fetch All User in Console -->
         <button (click)="getUser()">getUser</button>
-
     </div>
-
 </div>

@@ -1,18 +1,19 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from "@angular/material/icon";
+import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { PostRoutingModule } from './post-routing.module';
 import { PostListComponent } from './post-list/post-list.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { AddPostComponent } from './add-post/add-post.component';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/_shared/shared.module';
-import { StoreModule } from '@ngrx/store';
 import { postReducer } from './post.reducer';
-import { EffectsModule } from '@ngrx/effects';
 import { PostEffects } from './post.effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { postFeatureName } from './post.state';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     FormsModule,
     SharedModule,
     MatIconModule,
-    StoreModule.forFeature('posts', postReducer),
+    StoreModule.forFeature(postFeatureName, postReducer),
     EffectsModule.forFeature(PostEffects),
     StoreDevtoolsModule.instrument({
       //maxAge: 25, // Retains last 25 states

@@ -2,16 +2,12 @@
     <div class="flex justify-center">
         <div class="flex flex-col gap-2 w-full max-w-screen-md  m-4">
             <div class="flex gap-2">
-                <input readonly [(ngModel)]="inp_id" type="number" placeholder="id"
-                    class="w-2/12 border border-orange-400 rounded p-2">
-                <input [(ngModel)]="inp_userId" type="number" placeholder="UserID"
-                    class="w-2/12 border border-orange-400 rounded p-2" autofocus>
-                <input [(ngModel)]="inp_title" type="text" placeholder="Post Title"
-                    class="w-10/12 border border-orange-400 rounded p-2">
+                <input readonly [(ngModel)]="inp_id" type="number" placeholder="id" class="w-2/12 nInput">
+                <input [(ngModel)]="inp_userId" type="number" placeholder="UserID" class="w-2/12 nInput" autofocus>
+                <input [(ngModel)]="inp_title" type="text" placeholder="Post Title" class="w-10/12 nInput">
             </div>
             <div class="">
-                <input [(ngModel)]="inp_body" type="text" placeholder="Post body"
-                    class="w-full border border-orange-400 rounded p-2">
+                <input [(ngModel)]="inp_body" type="text" placeholder="Post body" class="w-full nInput">
             </div>
         </div>
     </div>

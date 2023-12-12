@@ -23,13 +23,15 @@ export class NformsComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(10)])
     });
-    console.log(this.x = "hi..");
-
   }
 
+
   onSubmit() {
+    console.log(this.nForm.value.name);
+    console.log(this.nForm.value.email);
+    console.log(this.nForm.value.password);
     console.log(this.nForm.value);
   }
 
-  x!: string;
+
 }

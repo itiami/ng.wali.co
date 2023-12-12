@@ -1,1 +1,59 @@
-<h3>hi..</h3>
+<app-header></app-header>
+<div class="flex justify-center m-4">
+    <div>
+        <h3 class="text-center">Watch in Console</h3>
+        <div>
+            <pre><code class="language-typescript">{{forHtml}}</code></pre>
+
+            <p>
+                In Angular, the lifecycle of a component follows a specific order, which dictates the sequence in which
+                the blocks of code in your example will execute. Here's the order listed for your TestComponent:
+            </p>
+            <p>
+                <span class="font-bold">Block_3 (Constructor):</span> The constructor is always the first part of any
+                class
+                to be
+                executed. In Angular
+                components, this is where you generally set up initial values for properties and do the basic class
+                setup. In your code, this.time_1 is assigned a value here.
+            </p>
+
+            <p>
+                <span class="font-bold">Block_1 (Property Initialization):</span> The property time_2 is initialized
+                immediately after the
+                constructor.
+                This is where class properties are set up with their initial values. In Angular, this happens before the
+                Angular-specific lifecycle hooks like ngOnInit.
+            </p>
+
+            <p>
+                <span class="font-bold">Block_4 (ngOnInit Lifecycle Hook):</span> The ngOnInit method is a lifecycle
+                hook in
+                Angular that
+                is called
+                after Angular has finished initializing all data-bound properties of a directive. This is where you
+                typically put initialization logic for the component. In your code, this is where console.log statements
+                are executed and where the testFn() method is called.
+            </p>
+
+            <p>
+                <span class="font-bold">Block_2 (Method Declaration):</span> The testFn method is simply a declaration
+                and
+                does not
+                execute on its own.
+                It only runs when called. In your example, it is called during the ngOnInit phase.
+            </p>
+            <p>
+                So, the execution order is as follows:
+            </p>
+
+            <ul class="ml-5 list-inside list-decimal marker:text-red-500 marker:font-bold marker:text-lg">
+                <li>Constructor (Block_3)</li>
+                <li>Property Initialization (Block_1)</li>
+                <li>ngOnInit (Block_4) </li>
+                <li>Method Call within ngOnInit (Block_2 is executed as part of Block_4 when testFn is called)</li>
+            </ul>
+
+        </div>
+    </div>
+</div>

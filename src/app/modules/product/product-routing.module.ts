@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductListComponent } from './controllers/product-list/product-list.component';
-import { ProductDetailComponent } from './controllers/product-detail/product-detail.component';
-import { SearchBarComponent } from './controllers/search-bar/search-bar.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 

@@ -15,7 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PopupContentComponent } from './popup-content/popup-content.component';
 import { NformsComponent } from './nforms/nforms.component';
-
+import { NgLifeCycleHooks } from './ng-lifecycle-hooks/ng-life';
+import { DataBindingComponent } from './data-binding/data-binding.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NformsComponent } from './nforms/nforms.component';
     PopupComponent,
     PopupContentComponent,
     NformsComponent,
-
+    NgLifeCycleHooks,
+    DataBindingComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,7 @@ import { NformsComponent } from './nforms/nforms.component';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
-
+    
   ],
   exports: [
     CounterButtonsComponent,
