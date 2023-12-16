@@ -24,6 +24,9 @@ import { PostModule } from './modules/post/post.module';
 import { CounterModule } from './modules/counter/counter.module';
 import { AddCategoryComponent } from './modules/category/add-category/add-category.component';
 import { EditCategoryComponent } from './modules/category/edit-category/edit-category.component';
+import { EntityDataModule } from '@ngrx/data';
+import { entityConfig } from './entity-metadata';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,8 @@ import { EditCategoryComponent } from './modules/category/edit-category/edit-cat
     TutoModule,
     PostModule,
     CounterModule,
+    EntityDataModule.forRoot(entityConfig),
+    StoreRouterConnectingModule.forRoot(),
 
   ],
   providers: [],

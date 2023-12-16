@@ -8,50 +8,52 @@
             <p [attr.class]="prodAttr">{{pageTitle}}</p>
         </div>
 
-        <div id="productsList">
-            <div class="productCard">
-                <div *ngFor="let product of productList" class="cardWrapper">
-                    <div>
-                        <img src="{{ product.imageUrl}}" alt="" class="prodImg">
-                    </div>
+        <div class="">
+            <div class="grid grid-cols-4">
+                <div *ngFor="let product of productList" class="productCard">
+                    <div class="">
+                        <div>
+                            <img src="{{ product.imageUrl}}" alt="" class="prodImg">
+                        </div>
 
-                    <div class="textDec"> {{ product.title}} </div>
-                    <div>Price: {{product.price}} €</div>
-                    <div class="textDec">Detail: {{product.detail}}</div>
-                    <div class="cartBtn">
-                        <button class="addToCart add_buy"
-                            (click)="addToCart('total: '+ product.title) + '\nPrice: '+ product.price">
-                            Add to Cart
-                        </button>
-                        <button class="buyNow add_buy"
-                            (click)="addToCart('total: '+ product.title) + '\nPrice: '+ product.price">
-                            Buy Now
-                        </button>
-                        <!-- MaterialDialog Button Click to open dialog -->
-                        <button class="nButton" (click)="openDialog(product)">Update</button>
-                        <button class="nButton" (click)="diaglogDelete(deleteItem)">Delete</button>
-                        <div class="">
-                            <ng-template #deleteItem>
-                                <div class="flex flex-col gap-2 bg-orange-100">
-                                    <div class=" m-4">
-                                        <h3>Confirm to delete</h3>
-                                        <p>ID: {{product._id}}</p>
-                                        <p>Title: {{product.title}}</p>
-                                        <p>Price: {{product.price}}</p>
+                        <div class="textDec"> {{ product.title}} </div>
+                        <div>Price: {{product.price}} €</div>
+                        <div class="textDec">Detail: {{product.detail}}</div>
+                        <div class="cartBtn">
+                            <button class="addToCart add_buy"
+                                (click)="addToCart('total: '+ product.title) + '\nPrice: '+ product.price">
+                                Add to Cart
+                            </button>
+                            <button class="buyNow add_buy"
+                                (click)="addToCart('total: '+ product.title) + '\nPrice: '+ product.price">
+                                Buy Now
+                            </button>
+
+                            <button class="nButton" (click)="openDialog(product)">Update</button>
+                            <button class="nButton" (click)="diaglogDelete(deleteItem)">Delete</button>
+                            <div class="">
+                                <ng-template #deleteItem>
+                                    <div class="flex flex-col gap-2 bg-orange-100">
+                                        <div class=" m-4">
+                                            <h3>Confirm to delete</h3>
+                                            <p>ID: {{product._id}}</p>
+                                            <p>Title: {{product.title}}</p>
+                                            <p>Price: {{product.price}}</p>
+                                        </div>
+
+                                        <div class="flex">
+                                            <button
+                                                class="bg-green-500 w-1/2 hover:underline underline-offset-4 decoration-slate-50 decoration-8 flex justify-center"
+                                                (click)="delete(product._id)"><span class="p-2">OK</span></button>
+
+                                            <button
+                                                class="bg-orange-500  w-1/2 hover:underline underline-offset-4 decoration-slate-50 decoration-8 flex justify-center"
+                                                (click)="dialogRef.close()"><span class="p-2">Cancel</span></button>
+
+                                        </div>
                                     </div>
-
-                                    <div class="flex">
-                                        <button
-                                            class="bg-green-500 w-1/2 hover:underline underline-offset-4 decoration-slate-50 decoration-8 flex justify-center"
-                                            (click)="delete(product._id)"><span class="p-2">OK</span></button>
-
-                                        <button
-                                            class="bg-orange-500  w-1/2 hover:underline underline-offset-4 decoration-slate-50 decoration-8 flex justify-center"
-                                            (click)="dialogRef.close()"><span class="p-2">Cancel</span></button>
-
-                                    </div>
-                                </div>
-                            </ng-template>
+                                </ng-template>
+                            </div>
                         </div>
                     </div>
                 </div>

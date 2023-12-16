@@ -1,12 +1,41 @@
 <p>Product .. Catalog</p>
 
 
-<ul *ngFor="let item of categoryList">
-    <li>{{item.mainCat}}</li>
-    <li>{{item.subCat}}</li>
-    <li>{{item.childCat}}</li>
-    <li>
-        <hr>
-    </li>
-    <br>
-</ul>
+<div class="flex gap-2">
+    <div>
+        <div>{{mainCatBind}}</div>
+        <mat-form-field>
+            <mat-label>Select Main Category</mat-label>
+            <mat-select [(ngModel)]="mainCatBind" (ngModelChanges)="onSelectionChange($event)">
+                <ng-container *ngFor="let category of mainCategories">
+                    <mat-option *ngIf="category" [value]="category">{{category}}</mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+    <div>
+        <div>{{subCatBind}}</div>
+        <mat-form-field>
+            <mat-label>Select SubCategory</mat-label>
+            <mat-select [(ngModel)]="subCatBind" (ngModelChange)="onSelectionChange($event)">
+                <ng-container *ngFor="let category of subCategories">
+                    <mat-option *ngIf="category" [value]="category">{{ category }} </mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <div>{{childCatBind_1}}</div>
+        <mat-form-field>
+            <mat-label>Select ChildCategory</mat-label>
+            <mat-select [(ngModel)]="childCatBind_1" (ngModelChange)="onSelectionChange($event)">
+                <ng-container *ngFor="let category of childCategories_1">
+                    <mat-option [value]="category">{{ category }} </mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+
+</div>

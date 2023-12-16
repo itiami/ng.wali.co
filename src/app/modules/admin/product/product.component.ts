@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductListService } from 'src/app/_services/product-list.service';
 import { AddProductComponent } from '../../product/add-product/add-product.component';
 import { IProduct } from 'src/app/_model/product-list.model';
+import { ICategory } from 'src/app/_model/category.model';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ProductComponent implements OnInit {
   data = new Object();
   productList: any = [];
   qt: number = 0;
+  categoryList!: ICategory[];
 
 
   constructor(
@@ -29,8 +31,8 @@ export class ProductComponent implements OnInit {
   getProductList(): void {
     this.productService.getAllProducts().subscribe(data => {
       if (data) {
-        this.productList = data;
-        console.log(data)
+        this.productList = data.body;
+        console.log(data.body)
       }
     })
   }

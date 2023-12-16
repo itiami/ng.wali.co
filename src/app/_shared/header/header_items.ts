@@ -38,6 +38,14 @@ export const navBarItems = [
                 "title": "Form Group",
                 "link": "/tuto/forms"
             },
+            {
+                "title": "Multilevel Select Option",
+                "link": "/tuto/selectOption"
+            },
+            {
+                "title": "Custom Pipe",
+                "link": "/tuto/customPipe"
+            },
         ]
     },
     {

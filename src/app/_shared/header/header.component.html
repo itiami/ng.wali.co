@@ -19,7 +19,15 @@
                 <a class="nav_link" routerLink="mailto:info@wali.co">Contact US</a>
             </section>
             <section class="login">
-                <a routerLink="/auth/login"><i class="fa-solid fa-user-lock icon"></i></a>
+                <a routerLink="/auth/login" (click)=" logout()">
+                    <mat-icon fontIcon="login" matTooltip="Click for Logout" *ngIf="isLoggedIn; else loggedOut"
+                        class="text-cyan-200">
+                    </mat-icon>
+                    <ng-template #loggedOut>
+                        <mat-icon fontIcon="logout" matTooltip="Click to Login" class="text-amber-400">
+                        </mat-icon>
+                    </ng-template>
+                </a>
             </section>
         </div>
     </div>
@@ -42,8 +50,7 @@
             </nav>
         </div>
         <div>
-            <button (click)="logout()">Logout</button>
+            <div *ngIf="username" class="text-white">Welcome Mr. {{username}}</div>
         </div>
     </div>
-    <div>{{_inpUsername}}</div>
 </header>

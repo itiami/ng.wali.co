@@ -91,10 +91,62 @@ body {
   cursor: default;
 }
 
+.nSelect {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: transparent transparent #d6d6d6ff transparent; /* top right bottm left */
+  box-shadow: 0 8px 6px -6px rgb(196, 195, 195);
+}
+
+/* Style for the multiple select box */
+.nMulti-select {
+  width: 300px; /* Width of the select box */
+  height: 150px; /* Height of the select box */
+  border: 1px solid #ccc; /* Border color and width */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Shadow effect for 3D appearance */
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #fff; /* Background color of the select box */
+  color: #333; /* Text color */
+  padding: 5px; /* Padding inside the select box */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Cursor type */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Style for individual options */
+.nMulti-select option {
+  padding: 8px 10px; /* Padding inside each option */
+  margin: 4px 2px; /* Margin around options */
+  border-bottom: 1px solid #eee; /* Border at the bottom of each option */
+  background-color: #fafafa; /* Background color of options */
+  cursor: pointer; /* Cursor type */
+}
+
+.nCheckbox {
+  border: 1px solid blue;
+  padding: 0 10px;
+  margin-right: 5px;
+  width: 10px;
+  height: 10px;
+}
+
+/* Hover effect for options */
+.nMulti-select option:hover {
+  background-color: #e6e6e6; /* Background color on hover */
+}
+
+/* Style for the selected options */
+.nMulti-select option:checked,
+.nMulti-select option:selected {
+  background-color: #d1e0ff; /* Background color for selected options */
+  color: #333; /* Text color for selected options */
+}
+
 .nInput {
   padding: 9px;
   font-size: 17px;
-  background-color: #ffffff;
+  background-color: #f0f3f0;
   color: #000000;
   border-radius: 5px;
   border: 1px solid;

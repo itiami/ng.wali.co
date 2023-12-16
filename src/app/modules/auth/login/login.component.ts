@@ -1,5 +1,5 @@
 // login.component.ts
-import { Component, ElementRef, OnInit, TemplateRef } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { User } from '../../../_model/user.model';
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   users: any = [];
 
 
+
   constructor(
     private elementRef: ElementRef,
     private _router: Router,
@@ -36,6 +37,16 @@ export class LoginComponent implements OnInit {
     private dialog: MatDialog,
     private gAuth: GoogleAuthService
   ) { }
+
+
+  ngOnInit(): void {
+    this.getAllUser();
+  }
+
+  ngAfterViewInit(): void {
+    // Access the native element using this.elementRef.nativeElement
+    const loginBtn = this.elementRef.nativeElement.querySelector('#loginBtn') as HTMLElement;
+  }
 
 
   getAllUser() {
@@ -61,6 +72,7 @@ export class LoginComponent implements OnInit {
     let usernameEl = document.querySelector("#username") as HTMLInputElement;
     let passwordEl = document.querySelector("#password") as HTMLInputElement;
     if (usernameEl.value != "" && passwordEl.value != "") {
+
       this.auth.userLogin(this.userData).pipe().subscribe(
         {
           next: res => {
@@ -70,6 +82,7 @@ export class LoginComponent implements OnInit {
             console.log(res.status); // 200
             console.log(res.statusText); // "OK"
             localStorage.setItem("token", res.body.token);
+            localStorage.setItem("username", usernameEl.value)
             window.sessionStorage.setItem("token", res.body.token);
           },
           error: (error: HttpErrorResponse) => {
@@ -103,10 +116,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  ngAfterViewInit(): void {
-    // Access the native element using this.elementRef.nativeElement
-    const loginBtn = this.elementRef.nativeElement.querySelector('#loginBtn') as HTMLElement;
-  }
+
 
   toggleFieldTextType() {
     this.fieldType = !this.fieldType;
@@ -152,9 +162,7 @@ export class LoginComponent implements OnInit {
     alert("LinkedIn Login..")
   }
 
-  ngOnInit(): void {
-    this.getAllUser();
-  }
+
 
 }
 

@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EditProductComponent } from '../edit-product/edit-product.component';
 import { IProduct } from 'src/app/_model/product-list.model';
 import { Store } from '@ngrx/store';
-import { deleteProduct } from '../../admin/product/product.action';
+import { deleteProduct, updateProduct } from '../../admin/product/product.action';
 
 
 
@@ -32,10 +32,21 @@ export class ProductListComponent implements OnInit {
 
   getProductList(): void {
     this.productService.getAllProducts().subscribe(data => {
-      if (data) {
-        this.productList = data;
-        console.log(data)
+      if (data.status === 200) {
+        this.productList = data.body;
+        console.log(
+          {
+            "Status: ": data.status,
+            "Status Text ": data.statusText,
+            "URL": data.url
+          }
+        );
+      } else {
+        console.log("Error getting Data: ", data.status);
       }
+
+
+
     })
   }
 
@@ -58,6 +69,7 @@ export class ProductListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log("dialogRef.afterClosed() if: ", result);
+        this.store.dispatch(updateProduct({ updatedProduct: result }))
 
       } else {
         console.log("dialogRef.afterClosed(): else..");

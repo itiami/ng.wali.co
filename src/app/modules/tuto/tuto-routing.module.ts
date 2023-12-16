@@ -5,6 +5,8 @@ import { PopupComponent } from './popup/popup.component';
 import { NformsComponent } from './nforms/nforms.component';
 import { NgLifeCycleHooks } from './ng-lifecycle-hooks/ng-life';
 import { DataBindingComponent } from './data-binding/data-binding.component';
+import { NestedJsonComponent } from './nested-json/nested-json.component';
+import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: "forms", component: NformsComponent },
   { path: "ngLifeCycleHooks", component: NgLifeCycleHooks },
   { path: "dataBinding", component: DataBindingComponent },
+  { path: "selectOption", component: NestedJsonComponent },
+  { path: "customPipe", component: CustomPipeComponent },
 ];
 
 @NgModule({

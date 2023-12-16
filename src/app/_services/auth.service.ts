@@ -12,12 +12,13 @@ export class AuthService {
   private token = new BehaviorSubject<string | null>(null);
   private URL_ENDPOINT = `http://${environment.backend.host}:${environment.backend.port}/api/`;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
     window.sessionStorage.removeItem('token');
+    window.sessionStorage.removeItem('username');
     this.token.next(null);
   }
 
@@ -79,7 +80,6 @@ export class AuthService {
       "password": "1234"
     }
   */
-
 }
 
 

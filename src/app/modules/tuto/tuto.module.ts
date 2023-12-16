@@ -9,7 +9,6 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { PopupComponent } from './popup/popup.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,6 +16,10 @@ import { PopupContentComponent } from './popup-content/popup-content.component';
 import { NformsComponent } from './nforms/nforms.component';
 import { NgLifeCycleHooks } from './ng-lifecycle-hooks/ng-life';
 import { DataBindingComponent } from './data-binding/data-binding.component';
+import { NestedJsonComponent } from './nested-json/nested-json.component';
+import { FilterByPropertyPipe } from 'src/app/_pipe/filter-by-property.pipe';
+import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
     PopupContentComponent,
     NformsComponent,
     NgLifeCycleHooks,
-    DataBindingComponent
+    DataBindingComponent,
+    NestedJsonComponent,
+    FilterByPropertyPipe,
+    CustomPipeComponent
   ],
   imports: [
     CommonModule,
@@ -38,9 +44,8 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
     MatFormFieldModule,
     MatDialogModule,
     MatIconModule,
-    MatButtonModule,
     MatInputModule,
-    
+
   ],
   exports: [
     CounterButtonsComponent,
@@ -48,7 +53,7 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
     CounterOutputComponent,
   ],
   providers: [
-    MatSnackBar,
+    MatSnackBar
   ]
 })
 export class TutoModule { }

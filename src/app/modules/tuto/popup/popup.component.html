@@ -5,12 +5,20 @@
         <!-- Material Snackbar As Attribute -->
         <div class="border border-zinc-500 p-4">
             <h3>Material Snackbar</h3>
-            <div class="flex gap-2 ">
-                <input class="nInput" value="Disco party!" #message>
-                <input class="nInput" value="Dance" #action>
-                <button (click)="openSnackBar(message.value, action.value)" class="nButton">
+            <div class="flex gap-2 align-middle ">
+                <mat-form-field>
+                    <mat-label>Disco party!</mat-label>
+                    <input matInput value="Disco party!" #message>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Dance</mat-label>
+                    <input matInput value="Dance" #action>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" (click)="openSnackBar(message.value, action.value)">
                     Show snack-bar
                 </button>
+
             </div>
         </div>
 

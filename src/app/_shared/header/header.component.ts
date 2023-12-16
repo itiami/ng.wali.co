@@ -1,25 +1,23 @@
-import { Component, ElementRef, Input, ViewChild, ViewRef } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewRef } from '@angular/core';
 import { navBarItems } from './header_items';
 import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   darkMode: boolean = false;
-
+  username!: string;
+  isLoggedIn!: boolean;
   menuItems = navBarItems;
   imgUrl = "../assets/img/logo256.png"
 
   navBar = {
     title: ""
   }
-
-  @Input() _inpUsername?: String;
 
   @ViewChild("html")
   htmlElem!: ElementRef;
@@ -29,6 +27,24 @@ export class HeaderComponent {
     private router: Router,
   ) { }
 
+
+  ngOnInit(): void {
+    this.loggedIn();
+    if (window.localStorage.getItem('username') !== null) {
+      this.username = window.localStorage.getItem('username')!;
+    }
+  }
+
+
+  @HostListener('isLoggedIn') loggedIn() {
+    if (window.localStorage.getItem('token') !== null) {
+      this.isLoggedIn = true;
+
+    } else {
+      this.isLoggedIn = false;
+    }
+
+  }
 
   logout() {
     this.auth.logout();

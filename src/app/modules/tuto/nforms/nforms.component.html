@@ -1,33 +1,61 @@
 <app-header></app-header>
 
-<div>
+<div class="flex flex-col">
     <div class="m-4 flex justify-center">
-        <form [formGroup]="nForm" class="nForm">
+        <form [formGroup]="nForm" class="flex flex-col gap-2">
             <div>
-                <input type="text" formControlName="name" placeholder="name">
+                <input type="text" class="nInput" formControlName="name" placeholder="name">
                 <div *ngIf="name?.errors?.['required']">Name is required.</div>
                 <div *ngIf="name?.errors?.['minlength']">Name must be at least 3 characters long.</div>
             </div>
             <div>
-                <input type="text" formControlName="email" placeholder="email">
+                <input type="text" class="nInput" formControlName="email" placeholder="email">
                 <div *ngIf="email?.errors?.['required']">Email is required.</div>
                 <div *ngIf="email?.errors?.['minlength']">Enter a valid Email Address</div>
             </div>
             <div>
-                <input type="text" formControlName="password" placeholder="password">
+                <input type="text" class="nInput" formControlName="password" placeholder="password">
                 <div *ngIf="password?.errors?.['required']">Password is required.</div>
                 <div *ngIf="password?.errors?.['minlength']">Email Length not Correct</div>
             </div>
-            <button (click)="onSubmit()" type="submit" [disabled]="!nForm.valid">
+
+            <div>
+                <label>Single Selct Option</label>
+                <div>{{ngmfcSelOption}}</div>
+                <select formControlName="fcSelOption" [(ngModel)]="ngmfcSelOption" class="nSelect">
+                    <option *ngFor="let item of mainCategories" [ngValue]="item">{{item}}</option>
+                </select>
+            </div>
+
+
+            <div class="flex gap-3">
+                <label>Gender:</label>
+                <label><input type="radio" formControlName="gender" value="male"> Male</label>
+                <label><input type="radio" formControlName="gender" value="female"> Female</label>
+            </div>
+
+            <div class="flex flex-col">
+                <label>Ctrl + mouseClick to select Multiple: </label>
+                <select formControlName="skills" multiple class="nMulti-select">
+                    <option value="skill1">
+                        <span class="nCheckbox"></span>Skill-1
+                    </option>
+                    <option value="skill2"><span class="nCheckbox"></span>Skill-2</option>
+                    <option value="skill3"><span class="nCheckbox"></span>Skill-3</option>
+                </select>
+            </div>
+
+            <div class="">
+                <mat-form-field>
+                    <mat-label>Multi Select With Material UI:</mat-label>
+                    <mat-select multiple formControlName="matSkills">
+                        <mat-option *ngFor="let item of mainCategories" [value]="item">{{item}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <button (click)="onSubmit()" type="submit" [disabled]="!nForm.valid" class="nButton">
                 Submit</button>
         </form>
-    </div>
-
-    <!-- test for wali -->
-    <div class="flex justify-center">
-        <p>Hello wali..</p>
-        <input type="text" class="border-b-8 border-orange-500 rounded-2xl text-center m-2 outline-none"
-            placeholder="Enter Name">
-        <div class="bg-orange-600  border-2 rounded-full w-16 h-16 flex items-center justify-center">Click</div>
     </div>
 </div>

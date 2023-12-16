@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { HttpClient, HttpContext, HttpHeaders, HttpParams, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { IProduct, ProductList } from "../_model/product-list.model";
 import { environment } from 'src/environments/environment';
-import { Category } from '../_model/category.model';
+import { Category, ICategory } from '../_model/category.model';
 
 
 @Injectable({
@@ -11,18 +11,30 @@ import { Category } from '../_model/category.model';
 })
 export class ProductListService {
 
-  private URL_ENDPOINT = `http://${environment.backend.host}:${environment.backend.port}/api/`;
+  private URL_ENDPOINT = `http://${environment.backend.host}:${environment.backend.port}/api`;
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts(): Observable<IProduct> {
-    return this.http.get<IProduct>(`${this.URL_ENDPOINT}product`);
+  getAllProducts(): Observable<HttpResponse<any>> {
+    return this.http.get<IProduct>(
+      `${this.URL_ENDPOINT}/product`,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+        observe: "response",
+        context: new HttpContext(),
+        params: new HttpParams(),
+        reportProgress: false,
+        withCredentials: false
+      }
+    )
   }
 
 
   productDetail(product: IProduct): Observable<any> {
     return this.http.post<IProduct>(
-      `${this.URL_ENDPOINT}findOne`,
+      `${this.URL_ENDPOINT}/product/findOne`,
       product,
       {
         headers: new HttpHeaders({
@@ -36,7 +48,7 @@ export class ProductListService {
 
   createProduct(product: ProductList): Observable<HttpResponse<any>> {
     return this.http.post(
-      `${this.URL_ENDPOINT}product`,
+      `${this.URL_ENDPOINT}/product`,
       product,
       {
         headers: new HttpHeaders({
@@ -47,25 +59,23 @@ export class ProductListService {
     );
   }
 
-  // POST Request
-  getCategory(category: Category): Observable<HttpResponse<any>> {
-    return this.http
-      .post<{ token: string }>(
-        this.URL_ENDPOINT + "category/findOneReqBody",
-        category,
-        {
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-          }),
-          observe: 'response'
-        }
-      )
-  };
 
 
-  updateProduct() {
 
-  };
+
+  updateProduct(product: IProduct): Observable<HttpResponse<any>> {
+    return this.http.put<IProduct>(
+      this.URL_ENDPOINT + "/product",
+      product,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+        observe: 'response'
+      }
+    )
+  }
+
 
   deleteProduct(product: ProductList): Observable<HttpResponse<any>> {
     return this.http.post(
@@ -79,12 +89,6 @@ export class ProductListService {
       }
     )
   };
-
-  //updateProduct(){}
-
-
-
-
 
 }
 

@@ -11,7 +11,7 @@
                             <option *ngFor="let cat of catList" [value]="cat.value">{{cat.value}}</option>
                         </select>
                     </div>
-                    <div class="flex flex-col">
+                    <div class="flex flex-col mx-20 my-4 gap-2">
                         <input formControlName="title" class="nInput" type="text" placeholder="title">
                         <input formControlName="price" class="nInput" type="text" placeholder="price">
                         <input formControlName="imageUrl" class="nInput" type="text" placeholder="image url">
@@ -20,8 +20,8 @@
             </div>
 
             <div class="flex">
-                <button class="bg-blue-500 w-1/2 p-4" (click)="dialogOK()">OK</button>
-                <button class="bg-orange-500 w-1/2 p-4" (click)="dialogCancel()">Cancel</button>
+                <button class="bg-blue-300 w-1/2 p-4" (click)="dialogOK()">Add Product</button>
+                <button class="bg-orange-300 w-1/2 p-4" (click)="dialogCancel()">Cancel</button>
             </div>
         </form>
     </div>

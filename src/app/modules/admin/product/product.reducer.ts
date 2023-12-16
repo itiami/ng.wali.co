@@ -36,9 +36,15 @@ export const productReducer = createReducer(
     on(deleteProduct, (state, action) => {
         return productAdapter.removeOne(action.productId, state)
     }),
-    /* on(updateProduct, (state, action) => {
-        return productAdapter.updateOne(action.updatedProduct, state);
-    }), */
+    on(updateProduct, (state, action) => {
+        return productAdapter.updateOne(
+            {
+                id: action.updatedProduct.id,
+                changes: action.updatedProduct
+            },
+            state
+        );
+    }),
     on(loadProductsSuccess, (state, action) => {
         return productAdapter.setAll(action.products, state)
     })

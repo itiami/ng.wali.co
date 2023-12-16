@@ -9,7 +9,12 @@ export const productFutureName = "product";
 export interface ProductState extends EntityState<IProduct> { }
 
 
-export const productAdapter: EntityAdapter<IProduct> = createEntityAdapter<IProduct>()
+export const productAdapter: EntityAdapter<IProduct> = createEntityAdapter<IProduct>(
+    {
+        selectId: (product: IProduct) => product.id,
+        sortComparer: false
+    }
+)
 
 
 

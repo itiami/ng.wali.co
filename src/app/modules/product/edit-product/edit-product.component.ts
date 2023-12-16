@@ -16,7 +16,6 @@ export class EditProductComponent implements OnInit {
   inp_detail!: string;
 
   constructor(
-    private store: Store,
     private matDialogRef: MatDialogRef<EditProductComponent>,
     @Inject(MAT_DIALOG_DATA) public productData: IProduct
   ) { };
@@ -35,8 +34,6 @@ export class EditProductComponent implements OnInit {
       price: this.inp_price,
       detail: this.inp_detail
     }
-
-    //this.store.dispatch(updateProduct({ product: product }));
     this.matDialogRef.close({ product: product });
   }
 
