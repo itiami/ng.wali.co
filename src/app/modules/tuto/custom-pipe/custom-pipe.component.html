@@ -24,14 +24,14 @@
             <ul class="_nSubMenu "> <!-- absolute hidden group-hover:block -->
                 <li *ngFor="let subItems of mainItems.subMenu" class="_nSubMenuItems">
                     <div class="">
-                        <span class="_nItemAndIcon nc">
+                        <span class="_nItemAndIcon">
                             <mat-icon>{{subItems.icon}}</mat-icon>
                             <span>{{subItems.title}}</span>
                             <mat-icon *ngIf="subItems.subMenu!.length">keyboard_arrow_right</mat-icon>
                         </span>
                     </div>
-                    <ul class="_nChildMenu absolute">
-                        <li *ngFor="let childItems of subItems.subMenu" class="">
+                    <ul *ngIf="subItems.subMenu!.length" class="_nChildMenu absolute">
+                        <li *ngFor="let childItems of subItems.subMenu" class="_nChildItems">
                             <div #_nChildMenu class="_nChild">
                                 <div class="_nItemAndIcon">
                                     <mat-icon>{{childItems.icon}}</mat-icon>
