@@ -1,0 +1,62 @@
+._page {
+  background-color: rgb(57, 57, 58);
+  color: aliceblue;
+  height: 100dvh;
+}
+
+._nNav {
+  display: flex;
+  gap: 10px;
+  background-color: rgb(33, 75, 92);
+}
+
+._nItemAndIcon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0px 10px;
+}
+
+._nMainMenu {
+  transition: 1s;
+  padding: 10px 0px;
+}
+
+._nMainMenu:hover {
+  background-color: rgb(47, 59, 50);
+}
+
+._nSubMenu {
+  margin-top: 10px;
+  padding-top: 10px;
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  width: max-content;
+}
+
+._nSubMenuItems {
+  display: flex;
+  align-items: start;
+
+  /* Here this with percentage is the base of translateX in ._nChildMenu */
+}
+
+._nMainMenu:hover ._nSubMenu {
+  display: flex;
+}
+
+._nChildMenu {
+  display: none;
+}
+
+._nSubMenuItems:hover ._nChildMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform: translateX(calc(100% - 20%));
+  width: max-content;
+}

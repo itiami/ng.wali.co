@@ -1,4 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Varela+Round:regular);
+@import url(https://fonts.googleapis.com/css?family=Nova+Round:regular);
+
+header {
+  font-family: "Nova Round", sans-serif;
+}
+
 
 @tailwind base;
 @tailwind components;

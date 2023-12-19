@@ -4,38 +4,49 @@
 <div class="flex gap-2">
     <div>
         <div>{{mainCatBind}}</div>
-        <mat-form-field>
-            <mat-label>Select Main Category</mat-label>
-            <mat-select [(ngModel)]="mainCatBind" (ngModelChanges)="onSelectionChange($event)">
-                <ng-container *ngFor="let category of mainCategories">
-                    <mat-option *ngIf="category" [value]="category">{{category}}</mat-option>
+        <div class="flex flex-col gap-2">
+            <label>Select Main Category</label>
+            <select [(ngModel)]="mainCatBind" (change)="onSelectionChange($event)">
+                <ng-container *ngFor="let category of categories | uniqueValue:'mainCat'">
+                    <option [value]="category.mainCat">{{category.mainCat}}</option>
                 </ng-container>
-            </mat-select>
-        </mat-form-field>
+            </select>
+        </div>
 
     </div>
     <div>
         <div>{{subCatBind}}</div>
-        <mat-form-field>
-            <mat-label>Select SubCategory</mat-label>
-            <mat-select [(ngModel)]="subCatBind" (ngModelChange)="onSelectionChange($event)">
+        <div class="flex flex-col gap-2">
+            <label>Select SubCategory</label>
+            <select [(ngModel)]="subCatBind" (change)="onSelectionChange($event)">
                 <ng-container *ngFor="let category of subCategories">
-                    <mat-option *ngIf="category" [value]="category">{{ category }} </mat-option>
+                    <option *ngIf="category" [value]="category">{{ category }} </option>
                 </ng-container>
-            </mat-select>
-        </mat-form-field>
+            </select>
+        </div>
     </div>
     <div>
         <div>{{childCatBind_1}}</div>
-        <mat-form-field>
-            <mat-label>Select ChildCategory</mat-label>
-            <mat-select [(ngModel)]="childCatBind_1" (ngModelChange)="onSelectionChange($event)">
+        <div class="flex flex-col gap-2">
+            <label>Select ChildCategory</label>
+            <select [(ngModel)]="childCatBind_1" (change)="onSelectionChange($event)">
                 <ng-container *ngFor="let category of childCategories_1">
-                    <mat-option [value]="category">{{ category }} </mat-option>
+                    <option [value]="category">{{ category }} </option>
                 </ng-container>
-            </mat-select>
-        </mat-form-field>
+            </select>
+        </div>
 
     </div>
 
+</div>
+
+<br>
+<br>
+<div>
+    <mat-form-field>
+        <mat-select (selectionChange)="getSub($event)">
+            <mat-option>Not Selected</mat-option>
+            <mat-option *ngFor="let item of subjects | keyvalue" [value]="item.key">{{item.value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>

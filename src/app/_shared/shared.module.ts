@@ -20,6 +20,11 @@ import { CapitalizePipe } from '../_pipe/capitalize.pipe';
 import { MultiArgPipe } from '../_pipe/multi-arg.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatList, MatListModule } from "@angular/material/list";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { UniqueValuePipe } from '../_pipe/unique-value.pipe';
 
 
 @NgModule({
@@ -34,6 +39,7 @@ import { MatSelectModule } from '@angular/material/select';
     UniquePipe,
     CapitalizePipe,
     MultiArgPipe,
+    UniqueValuePipe,
 
   ],
   imports: [
@@ -45,6 +51,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatListModule,
+    MatSidenavModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -63,6 +73,11 @@ import { MatSelectModule } from '@angular/material/select';
     UniquePipe,
     CapitalizePipe,
     MultiArgPipe,
+    UniqueValuePipe,
+    MatToolbarModule,
+    MatMenuModule,
+    MatListModule,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }

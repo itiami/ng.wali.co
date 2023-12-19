@@ -10,8 +10,8 @@ import { CategoryService } from 'src/app/_services/category.service';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  form!:FormGroup;
-  
+  form!: FormGroup;
+
   mainCatBind!: string;
   subCatBind!: string;
   childCatBind_1!: string;
@@ -22,6 +22,14 @@ export class CategoryComponent implements OnInit {
   childCategories_1 = new Set();
   childCategories_2 = new Set();
   menuStructure: any = {};
+
+
+  subjects = {
+    'mainCat': 'Electronics',
+    'subCat': 'Hard Drive',
+  };
+
+
 
   constructor(
     private categoryService: CategoryService,
@@ -40,16 +48,24 @@ export class CategoryComponent implements OnInit {
         this.categories = data.body;
         this.categories.forEach((item: ICategory) => {
           this.mainCategories.add(item.mainCat);
-          // this.subCategories.add(item.subCat);
-          // this.childCategories_1.add(item.childCat_1);
-          // this.childCategories_2.add(item.childCat_2);
+          this.subCategories.add(item.subCat);
+          this.childCategories_1.add(item.childCat_1);
+          this.childCategories_2.add(item.childCat_2);
         })
       }
     })
   }
 
-  onSelectionChange(option: any) {
-    console.log(option.balu);
+  onSelectionChange(value: any) {
+    console.log("onSelectionChange(): ", value.target.value);
+    this.subCategories.forEach(item => {
+      if (value.target.value! === item) {
+        console.log(item);
+
+      }
+    })
+
+
   }
 
   onChangeMain(option: any) {
@@ -70,6 +86,11 @@ export class CategoryComponent implements OnInit {
       }
 
     })
+  }
+
+
+  getSub(sub: any) {
+    console.log(sub.value);
   }
 
 

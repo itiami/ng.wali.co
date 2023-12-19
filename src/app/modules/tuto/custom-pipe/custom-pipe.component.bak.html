@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="page">
+    <div class="flex flex-col items-center">
+        <p>custom-pipe works!</p>
+
+        <div>
+            <p>Short Date: {{ date | multiArg:'fr-FR':'short' }}</p>
+            <p>Long Date: {{ date | multiArg:'fr-FR':'long' }}</p>
+        </div>
+
+        <button class="nButton" (click)="getUnique() ; getNmae()">getUnique</button>
+    </div>
+
+    <div>
+        <header class="nNavBar">
+            <div *ngFor="let mainMenuItems of navMenu.menu">
+                <div class="">
+                    <ng-template [ngIf]="!mainMenuItems.subMenu!.length" [ngIfElse]="hasSubmenu">
+                        <div class="_items" (click)="onMenuItemClick(mainMenuItems.title)">
+                            <mat-icon>{{mainMenuItems.icon}}</mat-icon>
+                            <span>{{mainMenuItems.title}}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template #hasSubmenu>
+                        <div class="hasSub">
+                            <div class="_items" (click)="onMenuItemClick(mainMenuItems.title)">
+                                <mat-icon>{{mainMenuItems.icon}}</mat-icon>
+                                <span>{{mainMenuItems.title}}</span>
+                            </div>
+
+                            <div class="subMenuBlock">
+                                <div *ngFor="let subMenuItems of mainMenuItems.subMenu">
+                                    <div class="_items">
+                                        <mat-icon>{{subMenuItems.icon}}</mat-icon>
+                                        <span>{{subMenuItems.title}}</span>
+                                    </div>
+                                    <div class="childMenuBlock">
+                                        <ng-template [ngIf]="subMenuItems.hasOwnProperty('childMenu')">
+                                            <div *ngFor="let childItems of subMenuItems.childMenu">
+                                                <div class="childItems">
+                                                    <div class="_items">
+                                                        <mat-icon>{{childItems.icon}}</mat-icon>
+                                                        <span>{{childItems.title}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
