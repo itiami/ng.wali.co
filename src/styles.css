@@ -1,11 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Varela+Round:regular);
 @import url(https://fonts.googleapis.com/css?family=Nova+Round:regular);
 
-header {
-  font-family: "Nova Round", sans-serif;
-}
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,8 +11,26 @@ header {
   box-sizing: border-box;
 }
 
+header {
+  font-family: "Nova Round", sans-serif;
+}
+
 body {
   font-family: "Varela Round";
+}
+
+/* Light theme styles */
+.light-theme {
+  background-color: white;
+  color: black;
+  /* other styles... */
+}
+
+/* Dark theme styles */
+.dark-theme {
+  background-color: rgb(75, 74, 74);
+  color: rgb(212, 211, 211);
+  /* other styles... */
 }
 
 .wrapper {

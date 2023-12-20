@@ -7,6 +7,7 @@ import { NgLifeCycleHooks } from './ng-lifecycle-hooks/ng-life';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { NestedJsonComponent } from './nested-json/nested-json.component';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
+import { CssComponent } from './css/css.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: "dataBinding", component: DataBindingComponent },
   { path: "selectOption", component: NestedJsonComponent },
   { path: "customPipe", component: CustomPipeComponent },
+  { path: "css", component: CssComponent },
 ];
 
 @NgModule({

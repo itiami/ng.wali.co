@@ -2,12 +2,12 @@ export const navBarItems = [
     {
         "title": "Users",
         "link": "/users",
-        "children": []
+        "subMenu": []
     },
     {
         "title": "Products",
         "link": "/",
-        "children": [
+        "subMenu": [
             {
                 "title": "List Test",
                 "link": "/product/productDetail"
@@ -21,7 +21,11 @@ export const navBarItems = [
     {
         "title": "Tuto",
         "link": "/",
-        "children": [
+        "subMenu": [
+            {
+                "title": "CSS Tutorial",
+                "link": "/tuto/css"
+            },
             {
                 "title": "Data Binding and Event Listener",
                 "link": "/tuto/dataBinding"
@@ -51,7 +55,7 @@ export const navBarItems = [
     {
         "title": "NgRx",
         "link": "#",
-        "children": [
+        "subMenu": [
             {
                 "title": "Counter",
                 "link": "/tuto/ngrx/counter"
@@ -69,6 +73,6 @@ export const navBarItems = [
     {
         "title": "Admin",
         "link": "/admin",
-        "children": []
+        "subMenu": []
     },
 ]

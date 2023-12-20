@@ -1,3 +1,5 @@
+export const tsCode =
+    `
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ProductListService } from "../../../_services/product-list.service";
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -91,3 +93,6 @@ export class ProductListComponent implements OnInit {
 
 }
 
+
+
+`

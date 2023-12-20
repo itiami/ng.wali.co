@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,13 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ngular';
-  imgUrl = "../assets/img/logo256.png";
+  constructor(private renderer: Renderer2) {
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDarkMode) {
+      this.renderer.addClass(document.body, 'dark-theme');
+    } else {
+      this.renderer.addClass(document.body, 'light-theme');
+    }
+  }
 
 }

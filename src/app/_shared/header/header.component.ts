@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewRef 
 import { navBarItems } from './header_items';
 import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
+import { ThemeService } from 'src/app/_services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
   htmlElem!: ElementRef;
 
   constructor(
+    private theme: ThemeService,
     private auth: AuthService,
     private router: Router,
   ) { }
@@ -37,13 +39,9 @@ export class HeaderComponent implements OnInit {
 
 
   @HostListener('isLoggedIn') loggedIn() {
-    if (window.localStorage.getItem('token') !== null) {
-      this.isLoggedIn = true;
-
-    } else {
-      this.isLoggedIn = false;
-    }
-
+    window.localStorage.getItem('token') !== null ?
+      this.isLoggedIn = true
+      : this.isLoggedIn = false;
   }
 
   logout() {
@@ -53,8 +51,12 @@ export class HeaderComponent implements OnInit {
 
 
   onClickMode() {
-    this.darkMode = true;
-
+    const colorMode = window.matchMedia("(prefers-color-scheme: dark)")
+    if (colorMode.matches) {
+      console.log("idDark: ", colorMode.matches);
+    } else {
+      console.log("isLight: ", colorMode.matches);
+    }
 
   }
 

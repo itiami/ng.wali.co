@@ -8,7 +8,8 @@
     <div class="top_bar">
         <div class="top_bar_content">
             <section (click)="onClickMode()">
-                <i class="fa-solid fa-circle-half-stroke fa-2xl" style="color: #dddddd;"></i>
+                <!-- <i class="fa-solid fa-circle-half-stroke fa-2xl" style="color: #dddddd;"></i> -->
+                <mat-icon class="text-[#c0f8ce] cursor-pointer">brightness_4</mat-icon>
             </section>
             <section class="phone">
                 <i class="fa-solid fa-phone icon"></i>
@@ -37,11 +38,11 @@
         <div>
             <nav class="text-white">
                 <ul class="flex space-x-4">
-                    <li *ngFor="let item of menuItems" class="relative" [class.group]="item.children.length">
+                    <li *ngFor="let item of menuItems" class="relative" [class.group]="item.subMenu.length">
                         <a [routerLink]="item.link" class="px-3 py-2 rounded-md text-sm font-medium">
                             {{ item.title }}</a>
-                        <ul *ngIf="item.children.length" class="fixed hidden group-hover:block bg-sky-700 z-50">
-                            <li *ngFor="let child of item.children" class="px-3 py-2 hover:bg-gray-600">
+                        <ul *ngIf="item.subMenu.length" class="fixed hidden group-hover:block bg-sky-700 z-50">
+                            <li *ngFor="let child of item.subMenu" class="px-3 py-2 hover:bg-gray-600">
                                 <a [routerLink]="child.link" class="block">{{ child.title }}</a>
                             </li>
                         </ul>
