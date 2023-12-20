@@ -1,67 +1,108 @@
-._page {
-  background-color: rgb(57, 57, 58);
-  color: aliceblue;
-  height: 100dvh;
-}
-
 ul li {
   list-style: none;
 }
 
+._page {
+  background-color: rgb(57, 57, 58);
+  color: aliceblue;
+  height: 100dvh;
+  --bgHoverColor: rgb(82, 51, 28);
+}
+
 ._nNav {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
   background-color: rgb(33, 75, 92);
+  width: 100dvw;
 }
 
 ._nItemAndIcon {
+  font-size: 0.8rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 5px;
-  font-size: 14px;
+  gap: 0.2rem;
   cursor: pointer;
 }
 
 ._nMainMenu {
   transition: 1s;
-  padding: 20px;
   width: max-content; /* Here this width is the base of translateX in ._nChildMenu */
+  padding: 1rem;
 }
 
 ._nMainMenu:hover {
-  background-color: rgb(33, 75, 92);
+  background-color: var(--bgHoverColor);
 }
 
 ._nSubMenu {
   display: none;
   position: absolute;
-  background-color: rgb(33, 75, 92);
+  margin-top: 1rem;
+}
+
+._nMainMenu:hover ._nSubMenu {
+  display: block;
 }
 
 ._nSubMenuItems {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: -1rem;
+  padding: 1rem;
+  background-color: rgb(33, 75, 92);
+  transition: 1s;
 }
 
-._nMainMenu:hover ._nSubMenu {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 10px;
+._nSubMenuItems:hover {
+  background-color: var(--bgHoverColor);
 }
 
 ._nSub {
+  display: flex;
+  align-items: flex-start;
+}
+
+.__nSubItems {
+  position: absolute;
 }
 
 ._nChildMenu {
+  position: absolute;
   display: none;
-  transform: translateX(calc(100% - 40%));
-  padding: 20px;
   background-color: rgb(33, 75, 92);
+  flex-direction: column;
+  width: max-content;
+  margin-left: 100%;
+}
+
+._nChildItems {
+  padding: 1rem;
+  transition: 1s;
+}
+
+._nChildItems:hover {
+  background-color: var(--bgHoverColor);
 }
 
 ._nSubMenuItems:hover ._nChildMenu {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: max-content;
+}
+
+._nFooter {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(27, 58, 85);
+  width: 100dvw;
+}
+
+.foterContent {
+  width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
