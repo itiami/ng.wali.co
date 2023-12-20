@@ -2,26 +2,29 @@
 
     <ul class="_nNav">
         <li *ngFor="let mainItems of navMenu.menu" class="_nMainMenu">
-            <span class="_nItemAndIcon">
-                <mat-icon class="_nFont">{{mainItems.icon}}</mat-icon>
-                <span class="_nFont">{{mainItems.title}}</span>
-                <mat-icon class="_nFont" *ngIf="mainItems.subMenu!.length">keyboard_arrow_down</mat-icon>
+            <span class="_nItemAndIcon" [routerLink]="mainItems.path" routerLinkActive="router-link-active">
+                <mat-icon>{{mainItems.icon}}</mat-icon>
+                <span>{{mainItems.title}}</span>
+
+                <mat-icon *ngIf="mainItems.subMenu!.length">keyboard_arrow_down</mat-icon>
             </span>
 
             <ul class="_nSubMenu">
                 <li *ngFor="let subItems of mainItems.subMenu" class="_nSubMenuItems">
                     <div class="_nSub">
-                        <span class="_nItemAndIcon" _nSubItems>
-                            <mat-icon class="_nFont">{{subItems.icon}}</mat-icon>
-                            <span class="_nFont">{{subItems.title}}</span>
-                            <mat-icon class="_nFont" *ngIf="subItems.subMenu!.length">keyboard_arrow_right</mat-icon>
+                        <span class="_nItemAndIcon" [routerLink]="subItems.path" routerLinkActive="router-link-active"
+                            _nSubItems>
+                            <mat-icon>{{subItems.icon}}</mat-icon>
+                            <span>{{subItems.title}}</span>
+                            <mat-icon *ngIf="subItems.subMenu!.length">keyboard_arrow_right</mat-icon>
                         </span>
                         <ul *ngIf="subItems.subMenu!.length" class="_nChildMenu">
                             <li *ngFor="let childItems of subItems.subMenu" class="_nChildItems">
                                 <div #_nChildMenu class="_nChild">
-                                    <div class="_nItemAndIcon">
-                                        <mat-icon class="_nFont">{{childItems.icon}}</mat-icon>
-                                        <span class="_nFont">{{childItems.title}}</span>
+                                    <div class="_nItemAndIcon" [routerLink]="childItems.path"
+                                        routerLinkActive="router-link-active">
+                                        <mat-icon>{{childItems.icon}}</mat-icon>
+                                        <span>{{childItems.title}}</span>
                                     </div>
                                 </div>
                             </li>
