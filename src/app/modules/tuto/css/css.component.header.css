@@ -5,17 +5,25 @@
 }
 
 ._nMenuItems {
+  font-size: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.3s ease-in-out;
 }
 
 ._nMenuItems:hover {
   text-shadow: 3px 4px 3px rgba(0, 0, 0, 0.45);
-  background-image: linear-gradient(80deg, #1d4ed8, #838181 100%);
-  background-repeat: no-repeat;
-  background-size: 100% 0.6em;
-  background-position: 0% -15%;
+  background-image: linear-gradient(
+    to right,
+    #54b3d6,
+    #54b3d6 50%,
+    #dbe5e6 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 ._nMainMenu {
