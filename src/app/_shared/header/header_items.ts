@@ -23,6 +23,10 @@ export const navBarItems = [
         "link": "/",
         "subMenu": [
             {
+                "title": "Angular Material Library",
+                "link": "/tuto/materialLibrary"
+            },
+            {
                 "title": "CSS Tutorial",
                 "link": "/tuto/css"
             },
@@ -36,7 +40,7 @@ export const navBarItems = [
             },
             {
                 "title": "Angular Material Library",
-                "link": "/tuto/materialLibrary"
+                "link": "/tuto/materialPopup"
             },
             {
                 "title": "Form Group",

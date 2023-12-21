@@ -8,11 +8,13 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
 import { NestedJsonComponent } from './nested-json/nested-json.component';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { CssComponent } from './css/css.component';
+import { AngularMatLibraryComponent } from './angular-mat-library/angular-mat-library.component';
 
 
 const routes: Routes = [
+  { path: "materialLibrary", component: AngularMatLibraryComponent },
   { path: "ngrx/counter", component: CounterComponent },
-  { path: "materialLibrary", component: PopupComponent },
+  { path: "materialPopup", component: PopupComponent },
   { path: "forms", component: NformsComponent },
   { path: "ngLifeCycleHooks", component: NgLifeCycleHooks },
   { path: "dataBinding", component: DataBindingComponent },

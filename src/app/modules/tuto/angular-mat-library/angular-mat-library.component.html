@@ -1,0 +1,71 @@
+<mat-toolbar color="primary">
+    <div *ngFor="let mainItems of nestedMenu.menu">
+        <ng-template [ngIf]="!mainItems.subMenu!.length" [ngIfElse]="hasSubMenu">
+            <button mat-button>
+                <mat-icon>{{mainItems.icon}}</mat-icon>
+                <span>{{mainItems.title}}</span>
+            </button>
+        </ng-template>
+        <ng-template #hasSubMenu>
+            <button mat-button [matMenuTriggerFor]="subMenu">
+                <mat-icon>{{mainItems.icon}}</mat-icon>
+                <span>{{mainItems.title}}</span>
+            </button>
+            <mat-menu #subMenu="matMenu">
+                <div *ngFor="let subItems of mainItems.subMenu">
+                    <ng-template [ngIf]="!subItems.subMenu!.length" [ngIfElse]="subHasChild">
+                        <button mat-menu-item>
+                            <mat-icon>{{subItems.icon}}</mat-icon>
+                            <span>{{subItems.title}}</span>
+                        </button>
+                    </ng-template>
+
+                    <ng-template #subHasChild>
+                        <button mat-menu-item [matMenuTriggerFor]="childMenu">
+                            <mat-icon>{{subItems.icon}}</mat-icon>
+                            <span>{{subItems.title}}</span>
+                        </button>
+                        <mat-menu #childMenu="matMenu">
+                            <div *ngFor="let childItems of subItems.subMenu">
+                                <button mat-menu-item>
+                                    <mat-icon>{{childItems.icon}}</mat-icon>
+                                    <span>{{childItems.title}}</span>
+                                </button>
+                            </div>
+                        </mat-menu>
+                    </ng-template>
+                </div>
+            </mat-menu>
+        </ng-template>
+    </div>
+</mat-toolbar>
+
+<!-- <button mat-button [matMenuTriggerFor]="mainItems.subMenu!.length ? subMenu : null"> -->
+
+
+<div class="text-center m-20">Above ng-template boiler plate can be simplified as below</div>
+
+<mat-toolbar color="primary">
+    <div *ngFor="let mainItems of nestedMenu.menu">
+        <button mat-button [matMenuTriggerFor]="mainItems.subMenu!.length ? subMenu : null">
+            <mat-icon>{{mainItems.icon}}</mat-icon>
+            <span>{{mainItems.title}}</span>
+        </button>
+        <mat-menu #subMenu="matMenu">
+            <div *ngFor="let subItems of mainItems.subMenu">
+                <button mat-menu-item [matMenuTriggerFor]="subItems.subMenu!.length ? childMenu : null">
+                    <mat-icon>{{subItems.icon}}</mat-icon>
+                    <span>{{subItems.title}}</span>
+                </button>
+                <mat-menu #childMenu="matMenu">
+                    <div *ngFor="let childItems of subItems.subMenu">
+                        <button mat-menu-item>
+                            <mat-icon>{{childItems.icon}}</mat-icon>
+                            <span>{{childItems.title}}</span>
+                        </button>
+                    </div>
+                </mat-menu>
+            </div>
+        </mat-menu>
+    </div>
+</mat-toolbar>

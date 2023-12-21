@@ -20,6 +20,7 @@ import { NestedJsonComponent } from './nested-json/nested-json.component';
 import { FilterByPropertyPipe } from 'src/app/_pipe/filter-by-property.pipe';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { CssComponent } from './css/css.component';
+import { AngularMatLibraryComponent } from './angular-mat-library/angular-mat-library.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CssComponent } from './css/css.component';
     NestedJsonComponent,
     FilterByPropertyPipe,
     CustomPipeComponent,
-    CssComponent
+    CssComponent,
+    AngularMatLibraryComponent
   ],
   imports: [
     CommonModule,

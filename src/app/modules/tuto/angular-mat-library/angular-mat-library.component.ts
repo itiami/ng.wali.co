@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { Component } from '@angular/core';
 import { JsonObj } from 'src/assets/data/menu';
 import * as menuObj from "src/assets/data/menu.json";
-
 
 
 interface childItem {
@@ -31,20 +29,21 @@ interface MainMenu {
   menu: IMenuItem[];
 }
 
+
 @Component({
-  selector: 'app-css',
-  templateUrl: './css.component.html',
-  styleUrls: ['./css.component.css']
+  selector: 'app-angular-mat-library',
+  templateUrl: './angular-mat-library.component.html',
+  styleUrls: ['./angular-mat-library.component.css']
 })
-export class CssComponent implements OnInit {
-  navMenu: MainMenu = JSON.parse(JSON.stringify(menuObj));
-
+export class AngularMatLibraryComponent {
   nestedMenu: MainMenu = JsonObj;
-
-
-  ngOnInit(): void {
-  }
-
-
-
 }
+
+
+
+
+
+
+
+
+
