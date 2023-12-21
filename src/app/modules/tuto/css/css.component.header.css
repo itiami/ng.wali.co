@@ -1,110 +1,62 @@
-ul li {
-  list-style: none;
+/* Navigation CSS */
+
+._nMatArrow {
+  margin-left: -0.5rem;
 }
 
-._page {
-  background-color: rgb(57, 57, 58);
-  color: aliceblue;
-  height: 100dvh;
-  --bgHoverColor: rgb(82, 51, 28);
-}
-
-._nNav {
+._nMenuItems {
   display: flex;
-  flex-wrap: wrap;
-  background-color: rgb(33, 75, 92);
-  width: 100dvw;
-}
-
-._nItemAndIcon {
-  font-size: 0.8rem;
-  display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0.2rem;
-  cursor: pointer;
+  gap: 0.5rem;
+}
+
+._nMenuItems:hover {
+  text-shadow: 3px 4px 3px rgba(0, 0, 0, 0.45);
+  background-image: linear-gradient(80deg, #1d4ed8, #838181 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.6em;
+  background-position: 0% -15%;
 }
 
 ._nMainMenu {
-  transition: 1s;
-  width: max-content; /* Here this width is the base of translateX in ._nChildMenu */
-  padding: 1rem;
+  background-color: rgb(82, 105, 99);
+  display: flex;
+  gap: 1rem;
 }
 
-._nMainMenu:hover {
-  background-color: var(--bgHoverColor);
+._nMainMenuItems {
+  padding: 1rem;
 }
 
 ._nSubMenu {
-  display: none;
-  position: absolute;
   margin-top: 1rem;
-}
-
-._nMainMenu:hover ._nSubMenu {
-  display: inline-block;
+  position: absolute;
 }
 
 ._nSubMenuItems {
+  display: none;
+}
+
+._nMainMenuItems:hover ._nSubMenuItems {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  gap: 1rem;
-  margin-left: -1rem;
-  padding: 1rem;
-  background-color: rgb(33, 75, 92);
-  transition: 1s;
-}
-
-._nSubMenuItems:hover {
-  background-color: var(--bgHoverColor);
-}
-
-._nSub {
-  display: flex;
-  align-items: flex-start;
-}
-
-.__nSubItems {
-  position: absolute;
+  padding: 0.5rem;
+  background-color: rgb(82, 105, 99);
 }
 
 ._nChildMenu {
-  background-color: rgb(33, 75, 92);
   position: absolute;
-  display: none;
-  flex-direction: column;
-  margin-left: 100%;
-  margin-top: -1rem;
+  transform: translateX(100%);
+  position: absolute;
+  background-color: rgb(82, 105, 99);
 }
 
-._nChildItems {
+._nChildMenuItems {
   width: max-content;
-  background-color: rgb(33, 75, 92);
-  padding: 1rem;
-  transition: 1s;
+
+  display: none;
 }
 
-._nChildItems:hover {
-  background-color: var(--bgHoverColor);
-}
-
-._nSubMenuItems:hover ._nChildMenu {
-  display: inline-block;
-}
-
-._nFooter {
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  background-color: rgb(27, 58, 85);
-  width: 100dvw;
-}
-
-.foterContent {
-  width: 1024px;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
+._nSubMenuItems:hover ._nChildMenuItems {
+  display: inline-flex;
+  padding: 0.5rem;
 }

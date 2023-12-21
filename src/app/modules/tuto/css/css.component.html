@@ -1,125 +1,100 @@
-<div class="_page">
+<div class="_nMainMenu">
+    <div *ngFor="let mainItems of navMenu.menu" class="_nMainMenuItems">
+        <a href="" class="_nMenuItems">
+            <mat-icon>{{mainItems.icon}}</mat-icon>
+            <span>{{mainItems.title}}</span>
+            <mat-icon class="arrow" *ngIf="mainItems.subMenu!.length">keyboard_arrow_down</mat-icon>
+        </a>
 
-    <ul class="_nNav">
-        <li *ngFor="let mainItems of navMenu.menu" class="_nMainMenu">
-            <span class="_nItemAndIcon" [routerLink]="mainItems.path" routerLinkActive="router-link-active">
-                <mat-icon>{{mainItems.icon}}</mat-icon>
-                <span>{{mainItems.title}}</span>
-
-                <mat-icon *ngIf="mainItems.subMenu!.length">keyboard_arrow_down</mat-icon>
-            </span>
-
-            <ul class="_nSubMenu">
-                <li *ngFor="let subItems of mainItems.subMenu" class="_nSubMenuItems">
-                    <div class="_nSub">
-                        <span class="_nItemAndIcon" [routerLink]="subItems.path" routerLinkActive="router-link-active"
-                            _nSubItems>
-                            <mat-icon>{{subItems.icon}}</mat-icon>
-                            <span>{{subItems.title}}</span>
-                            <mat-icon *ngIf="subItems.subMenu!.length">keyboard_arrow_right</mat-icon>
-                        </span>
-                        <ul *ngIf="subItems.subMenu!.length" class="_nChildMenu">
-                            <li *ngFor="let childItems of subItems.subMenu" class="_nChildItems">
-                                <div #_nChildMenu class="_nChild">
-                                    <div class="_nItemAndIcon" [routerLink]="childItems.path"
-                                        routerLinkActive="router-link-active">
-                                        <mat-icon>{{childItems.icon}}</mat-icon>
-                                        <span>{{childItems.title}}</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+        <div class="_nSubMenu">
+            <div *ngFor="let subItems of mainItems.subMenu">
+                <div class="_nSubMenuItems">
+                    <a href="" class="_nMenuItems">
+                        <mat-icon>{{subItems.icon}}</mat-icon>
+                        <span>{{subItems.title}}</span>
+                        <mat-icon class="_nMatArrow" *ngIf="subItems.subMenu!.length">keyboard_arrow_right</mat-icon>
+                    </a>
+                    <div *ngIf="subItems.subMenu!.length" class="_nChildMenu">
+                        <div *ngFor="let childItems of subItems.subMenu" class="_nChildMenuItems">
+                            <a href="" class="_nMenuItems">
+                                <mat-icon>{{childItems.icon}}</mat-icon>
+                                <span>{{childItems.title}}</span>
+                            </a>
+                        </div>
                     </div>
-                </li>
-            </ul>
-        <li>
-    </ul>
-
-
-    <div class="_nFooter">
-        <div class="foterContent">
-            <div>Left</div>
-            <div>Center</div>
-            <div>Right</div>
-        </div>
-    </div>
-
-    <div class="ncontent">
-        <div class="flex flex-col">
-            <div class="npara">
-                <p>Social key idea stuff. <a href='https://www.mcintyre.biz/'>gonzalez.com</a> Major start dream.</p>
-
-                <p>Whom hit shoulder low fall. <a href='http://www.reed.net/'>perez.com</a> Recognize prove soldier or.
-                </p>
-
-                <p>Off can table him. <a href='https://warren.biz/'>williams-jones.com</a> Face smile can nation art
-                    news some.</p>
-
-                <p>Blood reason course evidence service. <a href='https://www.johnson-booker.biz/'>white.org</a>
-                    Financial serious individual create western American less.</p>
-
-                <p>Coach never heavy us everything address edge. <a href='http://www.davis.biz/'>white-bailey.biz</a>
-                    Peace almost wish.</p>
-            </div>
-
-            <div class="nbutton">
-                <a href="#">Button_1</a>
-                <a href="#">Button_2</a>
-                <a href="#">Button_3</a>
-                <a href="#">Button_4</a>
-                <div>
-                    <a href="#">Button_5</a>
-                    <a href="#">Button_6</a>
-                    <a href="#">Button_7</a>
-                </div>
-                <div>
-                    <a href="#">Button_8</a>
-                    <a href="#">Button_9</a>
-                </div>
-                <div>
-                    <a href="#">Button_10</a>
-                </div>
-            </div>
-
-            <form class="nform">
-                <div>
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" id="username" />
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="password" />
-                </div>
-                <input type="radio" name="gender" value="male" />Male
-                <input type="radio" name="gender" value="female" />Female
-                <input type="radio" name="gender" value="other" />Other
-                <input list="Options" />
-                <datalist id="Options">
-                    <option value="Option1"></option>
-                    <option value="Option2"></option>
-                    <option value="Option3"></option>
-                </datalist>
-
-                <input type="submit" value="Submit" />
-                <input type="color" />
-                <input type="checkbox" name="correct" value="correct" />Correct
-            </form>
-
-            <div style="display:inline-flex; 
-                background-color:rgb(209, 209, 60); 
-                width:auto; height:auto; padding: 0.2rem">
-                <div style="display:inline; 
-                    background-color:purple;padding: 1rem">
-                    Computer
-                </div>
-                <div style="display:inline; 
-                    background-color:rgb(168, 112, 8);padding: 1rem">
-                    Science
-                </div>
-                <div style="display:inline; 
-                    background-color:rgb(56, 126, 126);padding: 1rem">
-                    Portal
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="ncontent">
+    <div class="flex flex-col">
+        <div class="npara">
+            <p>Social key idea stuff. <a href='https://www.mcintyre.biz/'>gonzalez.com</a> Major start dream.</p>
+
+            <p>Whom hit shoulder low fall. <a href='http://www.reed.net/'>perez.com</a> Recognize prove soldier or.
+            </p>
+
+            <p>Off can table him. <a href='https://warren.biz/'>williams-jones.com</a> Face smile can nation art
+                news some.</p>
+
+            <p>Blood reason course evidence service. <a href='https://www.johnson-booker.biz/'>white.org</a>
+                Financial serious individual create western American less.</p>
+
+            <p>Coach never heavy us everything address edge. <a href='http://www.davis.biz/'>white-bailey.biz</a>
+                Peace almost wish.</p>
+        </div>
+
+        <div class="nbutton">
+            <a href="#">Button_1</a>
+            <a href="#">Button_2</a>
+            <a href="#">Button_3</a>
+            <a href="#">Button_4</a>
+            <div>
+                <a href="#">Button_5</a>
+                <a href="#">Button_6</a>
+                <a href="#">Button_7</a>
+            </div>
+            <div>
+                <a href="#">Button_8</a>
+                <a href="#">Button_9</a>
+            </div>
+            <div>
+                <a href="#">Button_10</a>
+            </div>
+        </div>
+
+        <form class="nform">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" />
+            </div>
+            <input type="radio" name="gender" value="male" />Male
+            <input type="radio" name="gender" value="female" />Female
+            <input type="radio" name="gender" value="other" />Other
+            <input list="Options" />
+            <datalist id="Options">
+                <option value="Option1"></option>
+                <option value="Option2"></option>
+                <option value="Option3"></option>
+            </datalist>
+
+            <input type="submit" value="Submit" />
+            <input type="color" />
+            <input type="checkbox" name="correct" value="correct" />Correct
+        </form>
+    </div>
+</div>
+
+
+
+
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio facilis blanditiis, deleniti similique illum eius
+    officia vero neque dolorem sit qui facere nisi itaque quaerat alias quos consequatur vitae repellat!
+</p>
