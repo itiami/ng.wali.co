@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class ThemeService {
   private darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
+  public isDark = this.darkModeQuery.matches;
+
   constructor() {
     this.darkModeQuery.addEventListener('change', e => {
       this.setTheme(e.matches ? 'dark' : 'light');

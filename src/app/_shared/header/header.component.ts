@@ -1,8 +1,29 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewRef } from '@angular/core';
-import { navBarItems } from './header_items';
+import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChild, ViewRef } from '@angular/core';
+import * as menuObj from "src/assets/data/menu.json";
 import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
 import { ThemeService } from 'src/app/_services/theme.service';
+
+
+interface ISvgIcon {
+  iconName: string;
+  iconPath: string;
+}
+
+interface IMenuItem {
+  title: string;
+  icon: string;
+  svgIcon: ISvgIcon;
+  iconColor: string;
+  path: string;
+  subMenu?: IMenuItem[];
+}
+
+
+interface MainMenu {
+  menu: IMenuItem[];
+}
+
 
 @Component({
   selector: 'app-header',
@@ -10,24 +31,25 @@ import { ThemeService } from 'src/app/_services/theme.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  darkMode: boolean = false;
+  isDarkMode: boolean = false;
+
   username!: string;
   isLoggedIn!: boolean;
-  menuItems = navBarItems;
+  navMenu: MainMenu = JSON.parse(JSON.stringify(menuObj));
   imgUrl = "../assets/img/logo256.png"
 
-  navBar = {
-    title: ""
-  }
 
   @ViewChild("html")
   htmlElem!: ElementRef;
 
   constructor(
-    private theme: ThemeService,
+    private themeService: ThemeService,
     private auth: AuthService,
     private router: Router,
-  ) { }
+    private renderer: Renderer2
+  ) {
+    this.themeService.isDark ? this.renderer.addClass(document.body, 'dark-theme') : this.renderer.addClass(document.body, 'light-theme');
+  }
 
 
   ngOnInit(): void {
@@ -51,12 +73,16 @@ export class HeaderComponent implements OnInit {
 
 
   onClickMode() {
-    const colorMode = window.matchMedia("(prefers-color-scheme: dark)")
-    if (colorMode.matches) {
-      console.log("idDark: ", colorMode.matches);
+    if (this.isDarkMode) {
+      this.renderer.removeClass(document.body, 'light-theme');
+      this.renderer.addClass(document.body, 'dark-theme')
+      this.isDarkMode = !this.isDarkMode
     } else {
-      console.log("isLight: ", colorMode.matches);
+      this.renderer.removeClass(document.body, 'dark-theme');
+      this.renderer.addClass(document.body, 'light-theme');
+      this.isDarkMode = !this.isDarkMode
     }
+    console.log(this.isDarkMode);
 
   }
 

@@ -19,18 +19,14 @@ body {
   font-family: "Varela Round";
 }
 
-/* Light theme styles */
-.light-theme {
-  background-color: white;
-  color: black;
-  /* other styles... */
+.dark-theme {
+  background-color: rgb(49, 48, 48);
+  color: rgb(224, 220, 220);
 }
 
-/* Dark theme styles */
-.dark-theme {
-  background-color: rgb(75, 74, 74);
-  color: rgb(212, 211, 211);
-  /* other styles... */
+.light-theme {
+  background-color: rgb(241, 241, 241);
+  color: black;
 }
 
 .wrapper {

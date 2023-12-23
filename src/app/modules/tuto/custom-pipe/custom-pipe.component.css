@@ -3,8 +3,6 @@ ul li {
 }
 
 ._page {
-  background-color: rgb(57, 57, 58);
-  color: aliceblue;
   height: 100dvh;
   --bgHoverColor: rgb(82, 51, 28);
 }

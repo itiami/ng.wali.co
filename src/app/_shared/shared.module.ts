@@ -1,6 +1,6 @@
 // shared.module.ts
 
-import { NgModule } from '@angular/core';
+import { NgModule, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedRoutingModule } from './shared-routing.module';
@@ -54,7 +54,7 @@ import { UniqueValuePipe } from '../_pipe/unique-value.pipe';
     MatToolbarModule,
     MatMenuModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -77,7 +77,7 @@ import { UniqueValuePipe } from '../_pipe/unique-value.pipe';
     MatToolbarModule,
     MatMenuModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
   ]
 })
 export class SharedModule { }

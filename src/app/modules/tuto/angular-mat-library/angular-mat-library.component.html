@@ -40,26 +40,34 @@
     </div>
 </mat-toolbar>
 
-<!-- <button mat-button [matMenuTriggerFor]="mainItems.subMenu!.length ? subMenu : null"> -->
-
 
 <div class="text-center m-20">Above ng-template boiler plate can be simplified as below</div>
 
-<mat-toolbar color="primary">
+<mat-toolbar class="matToolbar">
     <div *ngFor="let mainItems of nestedMenu.menu">
-        <button mat-button [matMenuTriggerFor]="mainItems.subMenu!.length ? subMenu : null">
-            <mat-icon>{{mainItems.icon}}</mat-icon>
+        <button mat-button [matMenuTriggerFor]="mainItems.subMenu!.length ? subMenu : null"
+            [routerLink]="mainItems.path" routerLinkActive="router-link-active"
+            [ngStyle]="{color: mainItems.iconColor}">
+            <mat-icon *ngIf="mainItems.icon && !mainItems.svgIcon.iconName && !mainItems.svgIcon.iconPath; else svg">
+                {{mainItems.icon}}
+            </mat-icon>
+
+            <ng-template #svg>
+                <mat-icon svgIcon={{mainItems.svgIcon.iconName}}></mat-icon>
+                <!-- <img src={{mainItems.svgIcon.iconPath}} class="h-5 pr-2 svgFill" alt=""> -->
+            </ng-template>
             <span>{{mainItems.title}}</span>
         </button>
         <mat-menu #subMenu="matMenu">
             <div *ngFor="let subItems of mainItems.subMenu">
-                <button mat-menu-item [matMenuTriggerFor]="subItems.subMenu!.length ? childMenu : null">
+                <button mat-menu-item [matMenuTriggerFor]="subItems.subMenu!.length ? childMenu : null"
+                    [routerLink]="subItems.path" routerLinkActive="router-link-active">
                     <mat-icon>{{subItems.icon}}</mat-icon>
                     <span>{{subItems.title}}</span>
                 </button>
                 <mat-menu #childMenu="matMenu">
                     <div *ngFor="let childItems of subItems.subMenu">
-                        <button mat-menu-item>
+                        <button mat-menu-item [routerLink]="childItems.path" routerLinkActive="router-link-active">
                             <mat-icon>{{childItems.icon}}</mat-icon>
                             <span>{{childItems.title}}</span>
                         </button>
@@ -69,3 +77,58 @@
         </mat-menu>
     </div>
 </mat-toolbar>
+
+<!-- Butger Menu -->
+<!-- 
+    menu icon names - more_vert,  more_horiz, menu, apps, view_comfy, grain, dehaze, blur_on, blur_circular
+ -->
+<div>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon color="secondary">blur_on</mat-icon>
+    </button>
+
+    <mat-menu color="primary" #appMenu>
+        <div *ngFor="let mainItems of nestedMenu.menu">
+            <button mat-menu-item [matMenuTriggerFor]="mainItems.subMenu!.length ? subMenu : null">
+                <mat-icon>{{mainItems.icon}}</mat-icon>
+                <span>{{mainItems.title}}</span>
+            </button>
+            <mat-menu #subMenu="matMenu">
+                <div *ngFor="let subItems of mainItems.subMenu">
+                    <button mat-menu-item [matMenuTriggerFor]="subItems.subMenu!.length ? childMenu : null">
+                        <mat-icon>{{subItems.icon}}</mat-icon>
+                        <span>{{subItems.title}}</span>
+                    </button>
+                    <mat-menu #childMenu="matMenu">
+                        <div *ngFor="let childItems of subItems.subMenu">
+                            <button mat-menu-item>
+                                <mat-icon>{{childItems.icon}}</mat-icon>
+                                <span>{{childItems.title}}</span>
+                            </button>
+                        </div>
+                    </mat-menu>
+                </div>
+            </mat-menu>
+        </div>
+    </mat-menu>
+</div>
+
+
+<!-- Material Sidebar Menu -->
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Auto-resizing sidenav</p>
+        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+            Toggle extra text
+        </button>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+            Toggle sidenav
+        </button>
+    </div>
+
+</mat-drawer-container>
