@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChild, ViewRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, QueryList, Renderer2, ViewChild, ViewChildren, ViewRef } from '@angular/core';
 import * as menuObj from "src/assets/data/menu.json";
 import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
@@ -30,7 +30,7 @@ interface MainMenu {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   isDarkMode: boolean = false;
 
   username!: string;
@@ -39,16 +39,26 @@ export class HeaderComponent implements OnInit {
   imgUrl = "../assets/img/logo256.png"
 
 
-  @ViewChild("html")
-  htmlElem!: ElementRef;
+  @ViewChildren('_nTopForHover')
+  //_nTopForHover!: ElementRef<HTMLAnchorElement>;
+  _nTopForHover!: QueryList<ElementRef>;
+
+
 
   constructor(
     private themeService: ThemeService,
     private auth: AuthService,
     private router: Router,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private elementRef: ElementRef
   ) {
-    this.themeService.isDark ? this.renderer.addClass(document.body, 'dark-theme') : this.renderer.addClass(document.body, 'light-theme');
+    if (this.themeService.isDark) {
+      this.renderer.addClass(document.body, 'dark-theme');
+    } else {
+      this.renderer.addClass(document.body, 'light-theme');
+      this.isDarkMode = true;
+    }
+
   }
 
 
@@ -57,7 +67,20 @@ export class HeaderComponent implements OnInit {
     if (window.localStorage.getItem('username') !== null) {
       this.username = window.localStorage.getItem('username')!;
     }
-  }
+  };
+
+
+  ngAfterViewInit(): void {
+    this._nTopForHover.forEach(el => {
+      el.nativeElement.addEventListener('mouseover', () => {
+        el.nativeElement.style.color = this.isDarkMode ? 'red' : 'yellow'
+      })
+
+      el.nativeElement.addEventListener('mouseleave', () => {
+        el.nativeElement.style.color = this.isDarkMode ? '' : ''
+      })
+    });
+  };
 
 
   @HostListener('isLoggedIn') loggedIn() {
@@ -72,18 +95,26 @@ export class HeaderComponent implements OnInit {
   }
 
 
+
+
   onClickMode() {
     if (this.isDarkMode) {
       this.renderer.removeClass(document.body, 'light-theme');
       this.renderer.addClass(document.body, 'dark-theme')
+      console.log("isDark", this.isDarkMode);
       this.isDarkMode = !this.isDarkMode
     } else {
       this.renderer.removeClass(document.body, 'dark-theme');
       this.renderer.addClass(document.body, 'light-theme');
+      console.log("isDark", this.isDarkMode);
       this.isDarkMode = !this.isDarkMode
     }
-    console.log(this.isDarkMode);
-
   }
+
+
+
+
+
+
 
 }

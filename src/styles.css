@@ -9,6 +9,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --bgDark: rgb(49, 48, 48);
+  --bgLight: rgb(241, 241, 241);
 }
 
 header {
@@ -20,13 +22,29 @@ body {
 }
 
 .dark-theme {
-  background-color: rgb(49, 48, 48);
+  background-color: var(--bgDark);
   color: rgb(224, 220, 220);
 }
 
 .light-theme {
-  background-color: rgb(241, 241, 241);
+  background-color: var(--bgLight);
   color: black;
+}
+
+.dark-theme input {
+  background-color: #ccc;
+  color: #000000;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.light-theme input {
+  background-color: #ccc;
+  color: #000000;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  outline: none;
 }
 
 .wrapper {

@@ -1,65 +1,76 @@
 <header class="header">
-
     <!-- Header Top Bar -->
     <div>
         <div class="_nTop_bar_content">
-            <a (click)="onClickMode()">
-                <mat-icon matTooltip="Change Theme">brightness_4</mat-icon>
-            </a>
-            <a routerLink="tel:+3378545454">
-                <mat-icon>phone</mat-icon>
-                <span>+33 45 85 47 52 63</span>
-            </a>
-            <a href="mailto:info@wali.co">
-                <mat-icon>email</mat-icon>
-                <span>Contact US</span>
-            </a>
-            <a routerLink="/auth/login" (click)=" logout()">
-                <mat-icon fontIcon="login" matTooltip="Click for Logout" *ngIf="isLoggedIn; else loggedOut"
-                    class="text-cyan-200">
-                </mat-icon>
-                <ng-template #loggedOut>
-                    <mat-icon fontIcon="logout" matTooltip="Click to Login" class="text-amber-400">
+            <span class="_nTopContact">
+                <a routerLink="tel:+3378545454" #_nTopForHover>
+                    <mat-icon>phone</mat-icon>
+                    <span>+33 45 85 47 52 63</span>
+                </a>
+                <a href="mailto:info@wali.co" #_nTopForHover>
+                    <mat-icon>email</mat-icon>
+                    <span>Contact US</span>
+                </a>
+            </span>
+            <span class="_nTopRight">
+                <a (click)="onClickMode()" class="cursor-pointer">
+                    <mat-icon matTooltip="{{isDarkMode?'Change to Dark':'Change to Light'}}">brightness_4</mat-icon>
+                </a>
+                <a routerLink="/auth/login" (click)=" logout()" class="_nLogout">
+                    <mat-icon fontIcon="{{isLoggedIn?'logout':'login'}}"
+                        matTooltip="{{isLoggedIn?'to Logout':'to Login'}}">
                     </mat-icon>
-                </ng-template>
-            </a>
+                </a>
+            </span>
         </div>
     </div>
 
     <!-- Header Nav Menu -->
-    <div class="_nMainMenu">
-        <div *ngFor="let mainItems of navMenu.menu" class="_nMainMenuItems">
-            <a [routerLink]=mainItems.path class="_nMenuItems" [ngStyle]="{color: mainItems.iconColor}">
-                <mat-icon
-                    *ngIf="mainItems.icon && !mainItems.svgIcon.iconName && !mainItems.svgIcon.iconPath; else hasSvg">{{mainItems.icon}}</mat-icon>
-                <ng-template #hasSvg>
-                    <img src={{mainItems.svgIcon.iconPath}} class="h-5 pr-2 svgFill" alt="">
-                </ng-template>
-                <span>{{mainItems.title}}</span>
-                <mat-icon class="_nMatArrow" *ngIf="mainItems.subMenu!.length">keyboard_arrow_down</mat-icon>
-            </a>
+    <div class="_nNavBarContainer">
+        <div class="_nMainMenu">
+            <div *ngFor="let mainItems of navMenu.menu" class="_nMainMenuItems">
+                <a [routerLink]=mainItems.path class="_nMenuItems" [ngStyle]="{color: mainItems.iconColor}">
+                    <mat-icon
+                        *ngIf="mainItems.icon && !mainItems.svgIcon.iconName && !mainItems.svgIcon.iconPath; else hasSvg">{{mainItems.icon}}</mat-icon>
+                    <ng-template #hasSvg>
+                        <img src={{mainItems.svgIcon.iconPath}} class="h-5 pr-2 svgFill" alt="">
+                    </ng-template>
+                    <span>{{mainItems.title}}</span>
+                    <mat-icon class="_nMatArrow" *ngIf="mainItems.subMenu!.length">keyboard_arrow_down</mat-icon>
+                </a>
 
-            <div class="_nSubMenu">
-                <div *ngFor="let subItems of mainItems.subMenu">
-                    <div class="_nSubMenuItems">
-                        <a [routerLink]=subItems.path class="_nMenuItems" [ngStyle]="{color: subItems.iconColor}">
-                            <mat-icon>{{subItems.icon}}</mat-icon>
-                            <span>{{subItems.title}}</span>
-                            <mat-icon class="_nMatArrow"
-                                *ngIf="subItems.subMenu!.length">keyboard_arrow_right</mat-icon>
-                        </a>
-                        <div *ngIf="subItems.subMenu!.length" class="_nChildMenu">
-                            <div *ngFor="let childItems of subItems.subMenu" class="_nChildMenuItems">
-                                <a [routerLink]=childItems.path class="_nMenuItems"
-                                    [ngStyle]="{color: childItems.iconColor}">
-                                    <mat-icon>{{childItems.icon}}</mat-icon>
-                                    <span>{{childItems.title}}</span>
-                                </a>
+                <div class="_nSubMenu">
+                    <div *ngFor="let subItems of mainItems.subMenu">
+                        <div class="_nSubMenuItems">
+                            <a [routerLink]=subItems.path class="_nMenuItems" [ngStyle]="{color: subItems.iconColor}">
+                                <mat-icon>{{subItems.icon}}</mat-icon>
+                                <span>{{subItems.title}}</span>
+                                <mat-icon class="_nMatArrow"
+                                    *ngIf="subItems.subMenu!.length">keyboard_arrow_right</mat-icon>
+                            </a>
+                            <div *ngIf="subItems.subMenu!.length" class="_nChildMenu">
+                                <div *ngFor="let childItems of subItems.subMenu" class="_nChildMenuItems">
+                                    <a [routerLink]=childItems.path class="_nMenuItems"
+                                        [ngStyle]="{color: childItems.iconColor}">
+                                        <mat-icon
+                                            *ngIf="childItems.icon && !childItems.svgIcon.iconName && !childItems.svgIcon.iconPath; else hasChildSvg">
+                                            {{childItems.icon}}
+                                        </mat-icon>
+                                        <ng-template #hasChildSvg>
+                                            <img src={{childItems.svgIcon.iconPath}} class="h-5 pr-2 svgFill" alt="">
+                                        </ng-template>
+                                        <span>{{childItems.title}}</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="text-center" *ngIf="isLoggedIn">
+            <div>Welcome</div>
+            <div>{{username}}</div>
         </div>
     </div>
 </header>
