@@ -4,25 +4,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ThemeService {
-  private darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-  public isDark = this.darkModeQuery.matches;
+  private colorSchemeQuery: MediaQueryList;
 
   constructor() {
-    this.darkModeQuery.addEventListener('change', e => {
-      this.setTheme(e.matches ? 'dark' : 'light');
-    });
+    this.colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
   }
 
-  setTheme(theme: string) {
-    if (theme === 'dark') {
-      console.log("isDark Mode: ", theme);
-    } else {
-      console.log("isLight Mode: ", theme);
-    }
+  detectColorScheme() {
+    const darkModeOn = this.colorSchemeQuery.matches;
+    const theme = darkModeOn ? 'dark' : 'light';
+    this.setColorScheme(theme);
   }
 
-  getCurrentTheme(): string {
-    return this.darkModeQuery.matches ? 'dark' : 'light';
+  setColorScheme(theme: string) {
+    localStorage.setItem('user-theme', theme);
+    document.body.classList.add(theme);
+  }
+
+  isDark(): boolean {
+    return localStorage.getItem('user-theme') === 'light' ? false : true;
   }
 }
+

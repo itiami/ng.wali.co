@@ -12,16 +12,20 @@ import { CategoryService } from 'src/app/_services/category.service';
 export class CategoryComponent implements OnInit {
   form!: FormGroup;
 
+  matchOption_1: ICategory[] = [];
+
   mainCatBind!: string;
   subCatBind!: string;
   childCatBind_1!: string;
   childCatBind_2!: string;
   categories!: ICategory[];
+
   mainCategories: Set<any> = new Set();
   subCategories: Set<any> = new Set();
   childCategories_1 = new Set();
   childCategories_2 = new Set();
   menuStructure: any = {};
+
 
 
   subjects = {
@@ -39,7 +43,6 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCatagories();
-
   }
 
   getCatagories(): void {
@@ -56,44 +59,18 @@ export class CategoryComponent implements OnInit {
     })
   }
 
-  onSelectionChange(value: any) {
-    console.log("onSelectionChange(): ", value.target.value);
-    this.subCategories.forEach(item => {
-      if (value.target.value! === item) {
-        console.log(item);
-
-      }
-    })
-
-
-  }
-
-  onChangeMain(option: any) {
-    this.categories.forEach((item: ICategory) => {
-      console.log(this.mainCatBind);
-
-      if (this.mainCatBind === item.mainCat) {
-        this.subCategories.add(item.subCat);
-      }
-    })
-  }
-
-  onChangeSub(option: any) {
-    this.categories.forEach((item: ICategory) => {
-      if (item.subCat?.match(this.subCatBind)) {
-        this.childCategories_1.add(item.childCat_1);
-        this.childCategories_2.add(item.childCat_2);
-      }
-
-    })
-  }
-
-
-  getSub(sub: any) {
-    console.log(sub.value);
-  }
-
-
+  onSelectionChange(arg: any) {
+    this.categories.forEach(dt => {
+      if (arg.target.value === dt.mainCat) {
+        if (this.matchOption_1.length > 0 && this.matchOption_1[0].mainCat !== arg.target.value) {
+          this.matchOption_1.length = 0;
+          this.matchOption_1.push(dt);
+        } else {
+          this.matchOption_1.push(dt);
+        }
+      };
+    });
+  };
 
 }
 

@@ -52,11 +52,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     private elementRef: ElementRef
   ) {
-    if (this.themeService.isDark) {
+    this.themeService.detectColorScheme();
+    if (this.themeService.isDark()) {
       this.renderer.addClass(document.body, 'dark-theme');
     } else {
       this.renderer.addClass(document.body, 'light-theme');
-      this.isDarkMode = true;
+      this.isDarkMode = this.themeService.isDark();
     }
 
   }
@@ -102,13 +103,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.renderer.removeClass(document.body, 'light-theme');
       this.renderer.addClass(document.body, 'dark-theme')
       console.log("isDark", this.isDarkMode);
+      this.themeService.setColorScheme('dark')
       this.isDarkMode = !this.isDarkMode
     } else {
       this.renderer.removeClass(document.body, 'dark-theme');
       this.renderer.addClass(document.body, 'light-theme');
-      console.log("isDark", this.isDarkMode);
+      this.themeService.setColorScheme('light')
       this.isDarkMode = !this.isDarkMode
     }
+
+
   }
 
 

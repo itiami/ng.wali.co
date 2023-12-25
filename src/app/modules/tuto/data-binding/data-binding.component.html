@@ -9,7 +9,17 @@
         </div>
     </div>
     <div class="_nCard">
-        <div class="_nTitle">String Interpulation and @ViewChild</div>
+        <div class="_nTitle">String Interpulation and @ViewChildren</div>
+        <div class="flex justify-between">
+            <span #classElm>Text_1</span>
+            <span #classElm>Text_2</span>
+            <span #classElm>Text_3</span>
+        </div>
+        <div class="text-center">{{classElmOutput}}</div>
+    </div>
+    <div class="_nCard">
+        <div class="_nTitle">@HostListener for Windows resize</div>
 
+        <div class="text-center">{{winWidth}}</div>
     </div>
 </div>
