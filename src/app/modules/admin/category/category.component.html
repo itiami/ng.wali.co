@@ -1,53 +1,26 @@
-<p>Product .. Catalog</p>
-
-
-<div class="flex flex-col gap-2 items-center">
-    <div class="flex gap-2">
-        <div>
-            <div>{{mainCatBind}}</div>
-            <select [(ngModel)]="mainCatBind" (change)="onSelectionChange($event)">
-                <ng-container *ngFor="let category of categories | uniqueValue:'mainCat'">
-                    <option [value]="category.mainCat">
-                        {{category.mainCat}}
-                    </option>
-                </ng-container>
-            </select>
-        </div>
-        <div *ngIf="mainCatBind !==undefined && mainCatBind !==''">
-            <div>{{subCatBind}}</div>
-            <select [(ngModel)]="subCatBind" (change)="onSelectionChange($event)">
-                <ng-container *ngFor="let category of categories | uniqueValue:'subCat'">
-                    <ng-container *ngIf="category.mainCat === mainCatBind  
-            && category.subCat !=='' 
-            && category.subCat !==null
-            && category.subCat !==undefined">
-                        <option [ngValue]="category.subCat">
-                            <span>
-                                {{category.subCat}}
-                            </span>
-                        </option>
-                    </ng-container>
-                </ng-container>
-            </select>
-        </div>
-        <div *ngIf="subCatBind !==undefined && subCatBind !==''">
-            <div>{{childCatBind_1}}</div>
-            <select [(ngModel)]="childCatBind_1" (change)="onSelectionChange($event)">
-                <ng-container *ngFor="let category of categories | uniqueValue:'childCat_1'">
-                    <ng-container *ngIf="category.subCat === subCatBind  
-            && category.childCat_1 !=='' 
-            && category.childCat_1 !==null
-            && category.childCat_1 !==undefined">
-                        <option [value]="category.childCat_1">
-                            {{category.childCat_1}}
-                        </option>
-                    </ng-container>
-                </ng-container>
-            </select>
-        </div>
+<div class="flex flex-col gap-2">
+    <div class="flex gap-2 items-center">
+        <select [(ngModel)]="selectedMainCat" (change)="onMainCatChange()">
+            <option value="">Please Select</option>
+            <option *ngFor="let mainCat of mainCategories" [ngValue]="mainCat">{{ mainCat }}</option>
+        </select><span>{{selectedMainCat}}</span>
     </div>
-    <!-- <pre *ngIf="matchOption_1.length">{{matchOption_1 | json}}</pre> -->
-    <!-- <div class="bg-[#424141] p-2">
-        <pre>{{categories | json}}</pre>
-    </div> -->
+
+    <div class="flex gap-2 items-center">
+        <select [(ngModel)]="selectedSubCat" (change)="onSubCatChange()" *ngIf="subCategories.length > 0">
+            <option value="">Please Select</option>
+            <option *ngFor="let subCat of subCategories" [ngValue]="subCat">{{ subCat }}</option>
+        </select><span>{{selectedSubCat}}</span>
+    </div>
+
+    <div class="flex gap-2 items-center">
+        <select [(ngModel)]="selectedChild_1Cat" *ngIf="childCategories.length">
+            <option value="">Please Select</option>
+            <option *ngFor="let childCat of childCategories">{{ childCat }}</option>
+        </select><span>{{selectedChild_1Cat}}</span>
+    </div>
+    <div>
+        <button (click)=" getDt()" class="nButton">Get Data</button>
+    </div>
+    <pre *ngIf="output">{{output | json}}</pre>
 </div>

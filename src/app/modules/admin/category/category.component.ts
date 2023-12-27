@@ -1,45 +1,43 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject, Observable, from, of } from 'rxjs';
 import { ICategory } from 'src/app/_model/category.model';
 import { CategoryService } from 'src/app/_services/category.service';
+import { catJsonObj } from 'src/assets/data/categories';
 
+interface Category {
+  mainCat?: string;
+  subCat?: string;
+  childCat_1?: string;
+}
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
+
 export class CategoryComponent implements OnInit {
-  form!: FormGroup;
 
-  matchOption_1: ICategory[] = [];
+  catObj: Category[] = catJsonObj;
+  categories: ICategory[] = [];
 
-  mainCatBind!: string;
-  subCatBind!: string;
-  childCatBind_1!: string;
-  childCatBind_2!: string;
-  categories!: ICategory[];
+  mainCategories: any[] = [];
+  subCategories: any[] = [];
+  childCategories: any[] = [];
 
-  mainCategories: Set<any> = new Set();
-  subCategories: Set<any> = new Set();
-  childCategories_1 = new Set();
-  childCategories_2 = new Set();
-  menuStructure: any = {};
+  selectedMainCat: string = '';
+  selectedSubCat: string = '';
+  selectedChild_1Cat: string = '';
 
-
-
-  subjects = {
-    'mainCat': 'Electronics',
-    'subCat': 'Hard Drive',
-  };
-
+  output!: any;
 
 
   constructor(
     private categoryService: CategoryService,
-    private renderer: Renderer2
-  ) { }
-
+  ) {
+    //this.mainCategories = Array.from(new Set(this.catObj.map(item => item.mainCat)));
+  }
 
   ngOnInit(): void {
     this.getCatagories();
@@ -49,32 +47,35 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe(data => {
       if (data) {
         this.categories = data.body;
-        this.categories.forEach((item: ICategory) => {
-          this.mainCategories.add(item.mainCat);
-          this.subCategories.add(item.subCat);
-          this.childCategories_1.add(item.childCat_1);
-          this.childCategories_2.add(item.childCat_2);
-        })
+        this.mainCategories = Array.from(new Set(this.categories.map(item => item.mainCat)));
       }
     })
   }
 
-  onSelectionChange(arg: any) {
-    this.categories.forEach(dt => {
-      if (arg.target.value === dt.mainCat) {
-        if (this.matchOption_1.length > 0 && this.matchOption_1[0].mainCat !== arg.target.value) {
-          this.matchOption_1.length = 0;
-          this.matchOption_1.push(dt);
-        } else {
-          this.matchOption_1.push(dt);
-        }
-      };
-    });
-  };
+
+  onMainCatChange() {
+    this.subCategories = Array.from(new Set(this.catObj.filter(item => item.mainCat === this.selectedMainCat).map(item => item.subCat)));
+    this.childCategories = []; // reset child categories
+    this.selectedSubCat = "";
+    this.selectedChild_1Cat = "";
+  }
+
+  onSubCatChange() {
+    this.childCategories = Array.from(new Set(this.catObj.filter(item => item.subCat === this.selectedSubCat).map(item => item.childCat_1)));
+    this.selectedChild_1Cat = "";
+  }
+
+
+  getDt() {
+    this.output = {
+      mainCat: this.selectedMainCat,
+      subCat: this.selectedSubCat,
+      childCat_1: this.selectedChild_1Cat,
+    };
+
+    console.log(this.output);
+
+
+  }
 
 }
-
-
-
-
-
